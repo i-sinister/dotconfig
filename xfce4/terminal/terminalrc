@@ -1,15 +1,8 @@
 [Configuration]
-# https://github.com/sgerrand/xfce4-terminal-colors-solarized/blob/master/dark/terminalrc
-#ColorCursor=#586e75
-#ColorForeground=#657b83
-#ColorBackground=#fdf6e3
-#ColorPalette=#eee8d5;#dc322f;#859900;#b58900;#268bd2;#d33682;#2aa198;#073642;#fdf6e3;#cb4b16;#93a1a1;#839496;#657b83;#6c71c4;#586e75;#002b36
-# https://github.com/sgerrand/xfce4-terminal-colors-solarized/blob/master/light/terminalrc
 ColorCursor=#586e75
 ColorForeground=#657b83
 ColorBackground=#fdf6e3
 ColorPalette=#eee8d5;#dc322f;#859900;#b58900;#268bd2;#d33682;#2aa198;#073642;#fdf6e3;#cb4b16;#93a1a1;#839496;#657b83;#6c71c4;#586e75;#002b36
-
 MiscAlwaysShowTabs=FALSE
 MiscBell=FALSE
 MiscBordersDefault=TRUE
@@ -32,7 +25,6 @@ ScrollingOnOutput=FALSE
 FontName=Bitstream Vera Sans Mono 14
 DropdownWidth=100
 DropdownHeight=96
-DropdownOpacity=32
 DropdownAlwaysShowTabs=FALSE
 ScrollingSingleLine=FALSE
 ScrollingOnKeystroke=FALSE

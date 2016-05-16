@@ -6,14 +6,6 @@ prompt suse
 
 setopt histignorealldups sharehistory
 
-# Use emacs keybindings even if our EDITOR is set to vi
-bindkey -e
-
-# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-HISTSIZE=1000
-SAVEHIST=1000
-HISTFILE=~/.zsh_history
-
 # Use modern completion system
 autoload -Uz compinit
 compinit
@@ -35,20 +27,12 @@ zstyle ':completion:*' verbose true
 
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
-# Lines configured by zsh-newuser-install
+
+# history settings
 HISTFILE=~/.zsh.d/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 setopt appendhistory extendedglob
-unsetopt beep
-bindkey -v
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-zstyle :compinstall filename '/home/koruyucu/.zshrc'
-
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
 
 # File-manager like bindings Alt-Left and Alt-Up
 cdUndoKey() {
@@ -72,10 +56,12 @@ zle -N                 cdUndoKey
 bindkey '^[[1;3A'      cdParentKey
 bindkey '^[[1;3D'      cdUndoKey
 
-# setup 256 color terminal for vim
-if [[ "$COLORTERM" == "xfce4-terminal" ]]; then
-	export TERM=gnome-256color
-fi
+# mist settings
+unsetopt beep
+bindkey -v
+#if [[ "$COLORTERM" == "xfce4-terminal" ]]; then
+	#export TERM=gnome-256color
+#fi
 
 # set vim as default editor
 export EDITOR=vim
