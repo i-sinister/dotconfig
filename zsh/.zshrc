@@ -80,3 +80,14 @@ zle -N zle-line-init
 zle -N zle-keymap-select
 # set vim as default editor
 export EDITOR=vim
+# ls colors
+eval `dircolors ~/.config/gnu/dircolors.ansi-light`
+# aliases
+alias ls='ls --color -alh --group-directories-first'
+# tmuxinator completions
+source ~/.config/zsh/tmuxinator.zsh
+# load local configuration
+LOCALALIASES=~/Documents/work/aliases.sh
+ if [[ -f $LOCALALIASES && -r $LOCALALIASES ]]; then
+    source ~/Documents/work/aliases.sh
+fi
