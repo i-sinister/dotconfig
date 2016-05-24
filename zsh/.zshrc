@@ -8,7 +8,7 @@ setopt histignorealldups sharehistory
 
 # Use modern completion system
 autoload -Uz compinit
-compinit
+compinit -d ~/.cache/zsh/.zcompdump
 
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
@@ -29,7 +29,7 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 # history settings
-HISTFILE=~/.zsh.d/.histfile
+HISTFILE=~/.cache/zsh/zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
 setopt appendhistory extendedglob
