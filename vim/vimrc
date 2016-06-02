@@ -1,0 +1,28 @@
+if empty($VIM_CFG)
+	let $VIM_CFG = '~/.vim'
+endif
+if empty($VIM_VAR)
+	let $VIM_VAR = $VIM_CFG
+endif
+" global configuration
+source $VIM_CFG/global.vim
+" extensions
+source $VIM_CFG/extensions.vim
+" plugins configuration
+source $VIM_CFG/plugins_config.vim
+" configure vim-plug
+" directory for plugins
+if !isdirectory(expand($VIM_VAR.'/plugged'))
+  call mkdir(expand($VIM_VAR.'/plugged'), "p")
+endif
+call plug#begin($VIM_VAR.'/plugged')
+" import plugins
+source $VIM_CFG/plugins.vim
+" Add plugins to &runtimepath
+call plug#end()
+" configuration after plugins has been loaded
+source $VIM_CFG/plugins_after.vim
+" gui specific settings
+if has('gui_running')
+  source $VIM_CFG/gvimrc
+endif
