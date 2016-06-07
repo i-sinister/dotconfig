@@ -1,13 +1,9 @@
-" Get Code Issues and syntax errors
-let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
 " Use ctrlp.vim
 let g:OmniSharp_selector_ui = 'ctrlp'
 augroup omnisharp_commands
 	autocmd!
 	"Set autocomplete function to OmniSharp (if not using YouCompleteMe completion plugin)
 	autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
-	" Synchronous build (blocks Vim)
-	"autocmd FileType cs nnoremap <F5> :wa!<cr>:OmniSharpBuild<cr>
 	" Builds can also run asynchronously with vim-dispatch installed
 	autocmd FileType cs nnoremap <C-b> :wa!<cr>:OmniSharpBuildAsync<cr>
 	" automatic syntax check on events (TextChanged requires Vim 7.4)
@@ -34,8 +30,6 @@ augroup omnisharp_commands
 	"navigate down by method/property/field
 	autocmd FileType cs nnoremap <C-J> :OmniSharpNavigateDown<cr>
 augroup END
-" this setting controls how long to wait (in ms) before fetching type / symbol information.
-set updatetime=500
 " Contextual code actions (requires CtrlP or unite.vim)
 nnoremap <leader>ca :OmniSharpGetCodeActions<cr>
 " Run code actions with text selected in visual mode to extract method

@@ -43,12 +43,13 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-
 let g:syntastic_enable_signs=1
-let g:syntastic_auto_jump=1
+" conflicts with autocomplete window when OmniSharp is used
+" let g:syntastic_auto_jump=1
 let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
-
 let g:syntastic_html_checkers=['jslint']
+" requires omnisharp
+let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
 let g:syntastic_mode_map = { 'mode': 'active',
 	\ 'active_filetypes': ['html', 'js', 'less'] }
 " }}}
@@ -89,7 +90,7 @@ inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 " AutoComplPop like behavior.
-let g:neocomplete#enable_auto_select = 1
+"let g:neocomplete#enable_auto_select = 1
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -100,6 +101,7 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
 endif
+let g:neocomplete#sources#omni#input_patterns.cs = '.*[^=\);]'
 " }}}
 " csharp {{{
 source $VIM_CFG/plugin_omnisharp.vim
