@@ -83,11 +83,26 @@ export EDITOR=vim
 # ls colors
 eval `dircolors ~/.config/gnu/dircolors.ansi-light`
 # aliases
-alias ls='ls --color -alh --group-directories-first'
+alias zshrc='$EDITOR ~/.config/zsh/.zshrc' 
+# size,show type,human readable
+alias l='ls --color -lFh'
+# long list,show almost all,show type,human readable
+alias la='ls --color -lAFh --group-directories-first'
+# sorted by date,recursive,show type,human readable
+alias lr='ls --color -tRFh'
+# long list,sorted by date,show type,human readable
+alias lt='ls --color -ltFh'
+alias grep='grep --color'
+alias fd='find . -type d -name'
+alias ff='find . -type f -name'
+alias gs="git status"
+alias gd="git difftool"
+alias dud='du -d 1 -h'
+alias duf='du -sh *'
 # tmuxinator completions
 source ~/.config/zsh/tmuxinator.zsh
 # load local configuration
-LOCALALIASES=~/Documents/work/aliases.sh
+LOCALALIASES=~/.config/local/zsh/aliases.sh
  if [[ -f $LOCALALIASES && -r $LOCALALIASES ]]; then
-    source ~/Documents/work/aliases.sh
+    source $LOCALALIASES
 fi
