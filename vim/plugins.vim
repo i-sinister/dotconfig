@@ -7,6 +7,8 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'rking/ag.vim'
 " fuzzy file open
 Plug 'ctrlpvim/ctrlp.vim'
+" file drawer
+Plug 'scrooloose/nerdtree'
 " status line {{{
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'

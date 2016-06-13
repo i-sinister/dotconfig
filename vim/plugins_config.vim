@@ -29,6 +29,14 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(exe|so|dll)$',
   \ }
 " }}}
+" NERDTree {{{
+nnoremap <Leader>n :NERDTreeToggle<CR>
+nnoremap <Leader>l :NERDTreeFind<CR>
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+let g:NERDTreeWinPos = 'right'
+let NERDTreeMinimalUI = 1
+" }}}
 " Ag {{{
 " highlight results
 let g:ag_highlight=1
@@ -50,6 +58,7 @@ let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 let g:syntastic_html_checkers=['jslint']
 " requires omnisharp
 let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
+let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_mode_map = { 'mode': 'active',
 	\ 'active_filetypes': ['html', 'js', 'less'] }
 " }}}
