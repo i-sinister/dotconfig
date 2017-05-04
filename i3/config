@@ -19,7 +19,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Return exec xfce4-terminal -e "tmux -2 attach"
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -28,6 +28,12 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec rofi -show run -lines 10 -bw 1
 bindsym $mod+w exec rofi -show window -lines 10 -bw 1
 bindsym $mod+a exec xfce4-appfinder
+
+# volume management
+# && killall -USR1 i3status
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute && killall -USR1 i3status
+bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute && killall -USR1 i3status
+bindsym XF86AudioMute exec amixer -q set Master toggle && killall -USR1 i3status
 
 # change focus
 bindsym $mod+h focus left
@@ -174,7 +180,8 @@ bar {
         status_command i3status
         mode dock
         position top
-        tray_output VGA-1
+        #leave tray on the first output
+        #tray_output VGA-1
         tray_padding 0
         font pango:monospace 8
         workspace_buttons on
@@ -191,5 +198,5 @@ exec --no-startup-id xfsettingsd --sm-client-disable &
 exec --no-startup-id xfce4-volumed &
 exec --no-startup-id xfce4-power-manager &
 exec --no-startup-id nm-applet &
-exec xfce4-terminal
+exec xfce4-terminal -e "tmux -2 attach"
 exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/firefox'
