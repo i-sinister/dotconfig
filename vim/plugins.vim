@@ -13,9 +13,10 @@ Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " }}}
-" source control {
+Plug 'mhinz/vim-startify'
+" source control {{{
 Plug 'ludovicchabant/vim-lawrencium'
-" }
+" }}}
 "async external commands with output in vim
 Plug 'tpope/vim-dispatch'
 " fast movement
@@ -24,6 +25,9 @@ Plug 'easymotion/vim-easymotion'
 Plug 'scrooloose/syntastic'
 " popup completion menu
 Plug 'Shougo/neocomplete.vim'
+" sql formatter
+Plug 'vim-scripts/SQLUtilities'
+Plug 'vim-scripts/Align'
 " text editing {{{
 " commenting
 Plug 'scrooloose/nerdcommenter'
@@ -41,6 +45,8 @@ Plug 'austintaylor/vim-indentobject'
 Plug 'tpope/vim-sleuth'
 " advanced repeat command
 Plug 'tpope/vim-repeat'
+" wiki formatting
+Plug 'vimwiki/vimwiki'
 " }}}
 " json {{{
 Plug 'tpope/vim-jdaddy'
@@ -51,20 +57,20 @@ Plug 'mattn/emmet-vim'
 " }}}
 " javascript {{{
 " improved Javascript indentation and syntax support in Vim
-Plug 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript', {'for': 'javascript'}
+" syntax highlight
+Plug 'jelera/vim-javascript-syntax', {'for': 'javascript'}
 " Syntax for JavaScript libraries, including Angular
-Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'othree/javascript-libraries-syntax.vim', {'for': 'javascript'}
 " javascript autocompletion
-Plug 'ternjs/tern_for_vim'
-" UltiSnips & Snipmate for angular
-Plug 'matthewsimo/angular-vim-snippets'
+Plug 'ternjs/tern_for_vim', {'for': 'javascript', 'do': 'npm install'}
 " }}}
 " css {{{
 Plug 'JulesWang/css.vim'
 Plug 'genoma/vim-less'
 "}}}
 " c-sharp {{{
-Plug 'OmniSharp/omnisharp-vim'
+" Plug 'OmniSharp/omnisharp-vim'
 " }}}
 " python {{{
 Plug 'davidhalter/jedi-vim'

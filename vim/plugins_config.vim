@@ -14,11 +14,13 @@ map <Leader>l <Plug>(easymotion-lineforward)
 " }}}
 " CtrlP {{{
 nnoremap <Leader>o :CtrlP<CR>
+nnoremap <Leader>of :CtrlPCurFile<CR>
+nnoremap <Leader>od :CtrlPCurWD<CR>
 nnoremap <Leader>ob :CtrlPBuffer<CR>
 nnoremap <Leader>om :CtrlPMRU<CR>
 let g:ctrlp_map = '<Leader>o'
 " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_user_command = 'ag -l --nocolor -g "" %s'
 " ag is fast enough that CtrlP doesn't need to cache
 let g:ctrlp_use_caching = 0
 " display mru files in working directory only
@@ -40,7 +42,9 @@ let NERDTreeMinimalUI = 1
 " Ag {{{
 " highlight results
 let g:ag_highlight=1
+let g:ag_working_path_mode="r"
 nnoremap <C-f> :Ag!<Space>
+nnoremap <C-f>w :Ag!<Space><cword><CR>
 nnoremap <C-s> :AgFile!<Space>
 " }}}
 " airline {{{
@@ -52,23 +56,29 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_enable_signs=1
+let g:syntastic_aggregate_errors = 1
 " conflicts with autocomplete window when OmniSharp is used
 " let g:syntastic_auto_jump=1
 let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 let g:syntastic_html_checkers=['jslint']
 " requires omnisharp
 let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
-let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['eslint', 'jshint']
+let g:syntastic_javascript_eslint_exec = 'eslint_d'
 let g:syntastic_mode_map = { 'mode': 'active',
 	\ 'active_filetypes': ['html', 'js', 'less'] }
 " }}}
-" javascript-libraries {{{
+" vim-javascript {{{
+let g:javascript_plugin_jsdoc = 1
+" }}}
+" javascript-libraries-syntax {{{
 let g:used_javascript_libs = 'angularjs,angularui,angularuirouter,jquery'
 " }}}
 " tern_for_vim {{{
 let g:tern_map_keys = 1
-let g:tern_show_argument_hints = 'on_move'
-let g:tern_show_signature_in_pum = 1
+let g:tern_request_timeout = 10
+let g:tern_show_argument_hints = 'no'
+let g:tern_show_signature_in_pum = 0
 " }}}
 " vim-less {{{
 autocmd BufNewFile,BufRead *.less set filetype=less
@@ -118,16 +128,17 @@ source $VIM_CFG/plugin_omnisharp.vim
 " jedi-vim {{{
 let python_highlight_builtins=1
 let python_highlight_all=1
-let g:jedi#auto_initialization = 0
+let g:jedi#auto_initialization = 1
 let g:jedi#auto_vim_configuration = 0
+let g:jedi#popup_on_dot = 1
 let g:jedi#popup_select_first = 0
 let g:jedi#show_call_signatures = "1"
-let g:jedi#goto_command = ""
-let g:jedi#goto_assignments_command = ""
-let g:jedi#goto_definitions_command = ""
-let g:jedi#documentation_command = ""
-let g:jedi#usages_command = ""
+let g:jedi#goto_command = "<LocalLeader>jg"
+let g:jedi#goto_assignments_command = "<LocalLeader>ja"
+let g:jedi#goto_definitions_command = "<LocalLeader>jd"
+let g:jedi#documentation_command = "<LocalLeader>jh"
+let g:jedi#usages_command = "<LocalLeader>ju"
 let g:jedi#completions_command = "<C-Space>"
-let g:jedi#rename_command = ""
+let g:jedi#rename_command = "<LocalLeader>jr"
 " }}}
 " vim:foldmethod=marker:foldlevel=0

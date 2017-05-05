@@ -1,7 +1,7 @@
 " vim: se ff=unix
 " Color scheme {{{
 set t_Co=256
-set background=dark
+set background=light
 " }}}
 " General {{{
 set nocompatible
@@ -116,6 +116,20 @@ vnoremap / /\v
 " use <tab> to match brackets 
 nnoremap <tab> %
 vnoremap <tab> %
+" open quickfix/locations after *grep commands
+augroup auto_quickfix_location_open
+    autocmd!
+    autocmd QuickFixCmdPost [^l]* cwindow
+    autocmd QuickFixCmdPost l*    lwindow
+augroup END
+" search word under cursor in the current buffer
+nnoremap <Leader>f :vimgrep /<C-r><C-w>/j<Space>%<CR>
+" search word under cursor in
+nnoremap <Leader>ff :vimgrep /<C-r><C-w>/j
+" search word under cursor in the current buffer using grep
+nnoremap <Leader>gf :grep <C-r><C-w><Space>%<CR>
+" search word under cursor in using grep
+nnoremap <Leader>gff :grep <C-r><C-w>
 " semicolon is mapped to enter command mode
 nnoremap : ;
 " }}}
@@ -138,6 +152,7 @@ nnoremap k gk
 " }}}
 " Leader {{{
 let mapleader = "\<Space>"
+let maplocalleader = "\<Space>"
 " leader mapping during initialization;
 set timeoutlen=500
 " }}}
@@ -192,15 +207,13 @@ nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
 " QuickFix list {{{
 nnoremap <C-c><C-n> :cnext<CR>
 nnoremap <C-c><C-p> :cprevious<CR>
-nnoremap <C-c>o :cope!<CR>
-nnoremap <C-c>O :cope
+nnoremap <C-c>o :cope<CR>
 nnoremap <C-c>c :ccl<CR>
 " }}}
 " Location list {{{
 nnoremap <C-l><C-n> :lnext<CR>
 nnoremap <C-l><C-p> :lprev<CR>
-nnoremap <C-l>o :lop!<CR>
-nnoremap <C-l>O :lop
+nnoremap <C-l>o :lop<CR>
 nnoremap <C-l>c :lcl<CR>
 " }}}
 " File handling {{{
