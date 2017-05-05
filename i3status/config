@@ -37,9 +37,10 @@ disk "/" {
 }
 
 volume master {
-        device = "pulse:1"
         format = "♪:%volume"
         format_muted = "♪(%volume)"
+        device = "hw:0"
+        mixer = "Master"
 }
 battery 0 {
         format = "%status %percentage %remaining %emptytime"
@@ -55,6 +56,6 @@ battery 0 {
 }
 cpu_temperature 0 {
         format = "%degrees°C"
-        path = "/sys/devices/platform/coretemp.0/hwmon/hwmon1/temp1_input"
+        path = "/sys/devices/platform/coretemp.0/hwmon/hwmon0/temp1_input"
 }
 
