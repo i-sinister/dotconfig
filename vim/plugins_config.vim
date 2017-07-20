@@ -64,9 +64,10 @@ let g:syntastic_html_checkers=['jslint']
 " requires omnisharp
 let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
 let g:syntastic_javascript_checkers = ['eslint', 'jshint']
-let g:syntastic_javascript_eslint_exec = 'eslint_d'
 let g:syntastic_mode_map = { 'mode': 'active',
 	\ 'active_filetypes': ['html', 'js', 'less'] }
+" use eslintrc if corresponding file is found
+autocmd FileType javascript let b:syntastic_checkers = findfile('.eslintrc', '.;') != '' ? ['eslint'] : ['jshint']
 " }}}
 " vim-javascript {{{
 let g:javascript_plugin_jsdoc = 1
