@@ -47,6 +47,9 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-repeat'
 " wiki formatting
 Plug 'vimwiki/vimwiki'
+" code snippets
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
 " }}}
 " json {{{
 Plug 'tpope/vim-jdaddy'
@@ -64,6 +67,8 @@ Plug 'jelera/vim-javascript-syntax', {'for': 'javascript'}
 Plug 'othree/javascript-libraries-syntax.vim', {'for': 'javascript'}
 " javascript autocompletion
 Plug 'ternjs/tern_for_vim', {'for': 'javascript', 'do': 'npm install'}
+" es6 snippets; needs snippet engine
+Plug 'isRuslan/vim-es6', {'for': 'javascript'}
 " }}}
 " css {{{
 Plug 'JulesWang/css.vim'
