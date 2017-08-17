@@ -122,14 +122,6 @@ augroup auto_quickfix_location_open
     autocmd QuickFixCmdPost [^l]* cwindow
     autocmd QuickFixCmdPost l*    lwindow
 augroup END
-" search word under cursor in the current buffer
-nnoremap <Leader>f :vimgrep /<C-r><C-w>/j<Space>%<CR>
-" search word under cursor in
-nnoremap <Leader>ff :vimgrep /<C-r><C-w>/j
-" search word under cursor in the current buffer using grep
-nnoremap <Leader>gf :grep <C-r><C-w><Space>%<CR>
-" search word under cursor in using grep
-nnoremap <Leader>gff :grep <C-r><C-w>
 " semicolon is mapped to enter command mode
 nnoremap : ;
 " }}}
@@ -155,6 +147,16 @@ let mapleader = "\<Space>"
 let maplocalleader = "\<Space>"
 " leader mapping during initialization;
 set timeoutlen=500
+" }}}
+" Search commands {{{
+" search word under cursor in the current buffer
+nnoremap <Leader>f :vimgrep /<C-r><C-w>/j<Space>%<CR>
+" search word under cursor in
+nnoremap <Leader>ff :vimgrep /<C-r><C-w>/j
+" search word under cursor in the current buffer using grep
+nnoremap <Leader>gf :grep <C-r><C-w><Space>%<CR>
+" search word under cursor in using grep
+nnoremap <Leader>gff :grep <C-r><C-w>
 " }}}
 " vimrc {{{
 " edit vimrc

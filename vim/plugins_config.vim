@@ -61,6 +61,7 @@ let g:syntastic_aggregate_errors = 1
 " let g:syntastic_auto_jump=1
 let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 let g:syntastic_html_checkers=['jslint']
+let g:syntastic_less_lessc_args = '--npm-import="prefix=~"'
 " requires omnisharp
 let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
 let g:syntastic_javascript_checkers = ['eslint', 'jshint']
@@ -125,6 +126,7 @@ let g:neocomplete#sources#omni#input_patterns.cs = '.*[^=\);]'
 " }}}
 " neosnippet {{{
 let g:neosnippet#enable_snipmate_compatibility=1
+let g:neosnippet#snippets_directory='~/.config/vim/snippets/'
 " Plugin key-mappings.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -134,21 +136,17 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 " SuperTab like snippets' behavior.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
 imap <expr><TAB>
- \ pumvisible() ? "\<C-n>" :
- \ neosnippet#expandable_or_jumpable() ?
- \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
- \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+\ pumvisible() ? "\<C-n>" :
+\ neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB>
+\ neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 " For conceal markers.
 if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
-
-" Expand the completed snippet trigger by <CR>.
-imap <expr><CR>
-\ (pumvisible() && neosnippet#expandable()) ?
-\ "\<Plug>(neosnippet_expand)" : "\<CR>"
 " }}}
 " csharp {{{
 source $VIM_CFG/plugin_omnisharp.vim
