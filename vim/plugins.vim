@@ -14,6 +14,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " }}}
 Plug 'mhinz/vim-startify'
+" auto chdir to the projects root
+Plug 'airblade/vim-rooter'
 " source control {{{
 Plug 'ludovicchabant/vim-lawrencium'
 " }}}

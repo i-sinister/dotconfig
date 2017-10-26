@@ -47,6 +47,13 @@ nnoremap <C-f> :Ag!<Space>
 nnoremap <C-f>w :Ag!<Space><cword><CR>
 nnoremap <C-s> :AgFile!<Space>
 " }}}
+" rooter {{{
+" for files that are not under the project change directory to files directory
+" like similar to autochdir
+let g:rooter_change_directory_for_non_project_files = 'current'
+" change directory for current window only
+let g:rooter_use_lcd = 1
+" }}}
 " airline {{{
 set laststatus=2
 " }}}
