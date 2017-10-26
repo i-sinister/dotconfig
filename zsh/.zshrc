@@ -21,6 +21,12 @@ eval `dircolors ~/.config/gnu/dircolors.ansi-light`
 source ~/.config/zsh/alt_array_navigation.sh
 # vim-line editing
 source ~/.config/zsh/vim_mode.sh
+# fzf integration
+source ~/.config/zsh/fzf.sh
+source ~/.config/zsh/fzf_git.sh
+source ~/.config/zsh/fzf_tmux.sh
+# interactive cd: ttps://github.com/changyuheng/zsh-interactive-cd
+source ~/.config/zsh/zsh-interactive-cd.plugin.zsh
 # common aliases
 source ~/.config/zsh/aliases.sh
 # load local configuration
