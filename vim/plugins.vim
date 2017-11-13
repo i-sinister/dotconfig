@@ -6,7 +6,9 @@ Plug 'altercation/vim-colors-solarized'
 " 'ag' searching integration
 Plug 'rking/ag.vim'
 " fuzzy file open
-Plug 'ctrlpvim/ctrlp.vim'
+" fzf is installed and managed externally
+Plug 'junegunn/fzf', { 'dir': '~/bin/fzf' }
+Plug 'junegunn/fzf.vim'
 " file drawer
 Plug 'scrooloose/nerdtree'
 " status line {{{

@@ -12,24 +12,12 @@ map <Leader>k <Plug>(easymotion-k)
 map <Leader>h <Plug>(easymotion-linebackward)
 map <Leader>l <Plug>(easymotion-lineforward)
 " }}}
-" CtrlP {{{
-nnoremap <Leader>o :CtrlP<CR>
-nnoremap <Leader>of :CtrlPCurFile<CR>
-nnoremap <Leader>od :CtrlPCurWD<CR>
-nnoremap <Leader>ob :CtrlPBuffer<CR>
-nnoremap <Leader>om :CtrlPMRU<CR>
-let g:ctrlp_map = '<Leader>o'
-" Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-let g:ctrlp_user_command = 'ag -l --nocolor -g "" %s'
-" ag is fast enough that CtrlP doesn't need to cache
-let g:ctrlp_use_caching = 0
-" display mru files in working directory only
-let g:ctrlp_mruf_relative = 1
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.(git|hg|svn))|(packages)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ }
+" fzf.vim {{{
+" fzf provides Ag command 
+let g:fzf_command_prefix = 'Fzf'
+nnoremap <Leader>o :FzfFiles<CR>
+nnoremap <Leader>od :FzfFiles getcwd()<CR>
+nnoremap <Leader>ob :FzfBuffers<CR>
 " }}}
 " NERDTree {{{
 nnoremap <Leader>n :NERDTreeToggle<CR>

@@ -22,6 +22,7 @@ source ~/.config/zsh/alt_array_navigation.sh
 # vim-line editing
 source ~/.config/zsh/vim_mode.sh
 # fzf integration
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source ~/.config/zsh/fzf.sh
 source ~/.config/zsh/fzf_git.sh
 source ~/.config/zsh/fzf_tmux.sh
