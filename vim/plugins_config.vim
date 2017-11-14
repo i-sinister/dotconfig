@@ -16,8 +16,11 @@ map <Leader>l <Plug>(easymotion-lineforward)
 " fzf provides Ag command 
 let g:fzf_command_prefix = 'Fzf'
 nnoremap <Leader>o :FzfFiles<CR>
-nnoremap <Leader>od :FzfFiles getcwd()<CR>
+nnoremap <Leader>od :execute 'FzfFiles '.expand('%:p:h')<CR>
 nnoremap <Leader>ob :FzfBuffers<CR>
+nnoremap <Leader>sl :FzfBLines<CR>
+nnoremap <Leader>sa :FzfLines<CR>
+nnoremap <Leader>ma :FzfMaps<CR>
 " }}}
 " NERDTree {{{
 nnoremap <Leader>n :NERDTreeToggle<CR>
