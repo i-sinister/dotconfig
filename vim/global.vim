@@ -103,7 +103,7 @@ nnoremap ; :
 " }}}
 " Search {{{
 " use ag for grepping
-set grepprg=ag\ --nogroup\ --nocolor
+set grepprg=ag\ --nogroup\ --nocolor\ --path-to-ignore\ ~/.ignore
 set ignorecase
 " highligh matching brackets
 set showmatch

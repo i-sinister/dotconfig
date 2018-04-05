@@ -15,7 +15,10 @@ map <Leader>l <Plug>(easymotion-lineforward)
 " fzf.vim {{{
 " fzf provides Ag command 
 let g:fzf_command_prefix = 'Fzf'
-nnoremap <Leader>o :FzfFiles<CR>
+nnoremap <Leader>o :FzfAg<CR>
+" open 'Mercurial' (from the repo)
+nnoremap <Leader>om :call fzf#run(fzf#wrap({'source': 'hg status --modified --clean --unknown --no-status'}))<CR>
+nnoremap <Leader>of :FzfFiles<CR>
 nnoremap <Leader>od :execute 'FzfFiles '.expand('%:p:h')<CR>
 nnoremap <Leader>ob :FzfBuffers<CR>
 nnoremap <Leader>sl :FzfBLines<CR>
@@ -165,4 +168,31 @@ let g:jedi#usages_command = "<LocalLeader>ju"
 let g:jedi#completions_command = "<C-Space>"
 let g:jedi#rename_command = "<LocalLeader>jr"
 " }}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 " vim:foldmethod=marker:foldlevel=0
