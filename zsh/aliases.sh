@@ -15,3 +15,5 @@ alias gs="git status"
 alias gd="git difftool"
 alias dud='du -d 1 -h'
 alias duf='du -sh *'
+# silver_searcher
+alias ag='ag --path-to-ignore ~/.ignore'
