@@ -30,4 +30,5 @@ ScrollingSingleLine=FALSE
 ScrollingOnKeystroke=FALSE
 ShortcutsNoMnemonics=TRUE
 ShortcutsNoMenukey=TRUE
+TitleMode=TERMINAL_TITLE_REPLACE
 
