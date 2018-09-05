@@ -2,9 +2,7 @@
 unsetopt beep
 setopt extendedglob
 # Set up the prompt
-autoload -Uz promptinit
-promptinit
-prompt suse
+export PS1="%F{11}%n%f@%B%m%b:%F{4}%(4~|%-1~../%1~|%~)%f >"
 # history settings
 HISTFILE=~/.cache/zsh/zsh_history
 HISTSIZE=1000
@@ -26,7 +24,7 @@ source ~/.config/zsh/vim_mode.sh
 source ~/.config/zsh/fzf.sh
 source ~/.config/zsh/fzf_git.sh
 source ~/.config/zsh/fzf_tmux.sh
-# interactive cd: ttps://github.com/changyuheng/zsh-interactive-cd
+# interactive cd: https://github.com/changyuheng/zsh-interactive-cd
 source ~/.config/zsh/zsh-interactive-cd.plugin.zsh
 # common aliases
 source ~/.config/zsh/aliases.sh

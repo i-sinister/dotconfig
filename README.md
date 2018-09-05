@@ -17,7 +17,7 @@ git pull origin master
 cd ~
 ```
 ### zsh
-To make zsh default shell run ````sudo -s chsh $(which zsh) ```` then logout and login again.
+To make zsh default shell run ````chsh -s $(which zsh) ```` then logout and login again.
 ```Bash
 ~/.config/zsh/install.sh
 ```

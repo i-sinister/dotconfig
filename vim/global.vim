@@ -35,7 +35,7 @@ if &term == "screen-256color"
   set t_fs=\\;
 endif
 set title
-autocmd BufEnter * let &titlestring = ' ' . expand("%:t")
+autocmd BufEnter * let &titlestring = expand("%:t")
 " restore original title
 autocmd VimLeave * set notitle
 " }}}
