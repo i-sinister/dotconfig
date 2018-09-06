@@ -1,5 +1,18 @@
 # content from fzf wiki: https://github.com/junegunn/fzf/wiki/examples
-
+fzfhelp() {
+  cat << EOF
+cdf   - cd to selected firectory
+csf   - cd to subdirectory
+cdpf  - cd to selected parent directory
+cdfd  - cd to directory of selected file
+cf    - fuzzy cd from anywhere
+fe    - open selected file in editor
+fo    - open or edit selected file
+vf    - fuzzy open with vim anywhere
+vf    - fuzzy grep via ag
+fkill - kill process
+EOF
+}
 # fe [FUZZY PATTERN] - Open the selected file with the default editor
 # - Bypass fuzzy finder if there's only one match (--select-1)
 # - Exit if there's no match (--exit-0)
