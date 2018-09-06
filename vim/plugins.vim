@@ -84,6 +84,10 @@ Plug 'genoma/vim-less'
 " python {{{
 Plug 'davidhalter/jedi-vim'
 " }}}
+" rust {{{
+Plug 'rust-lang/rust.vim'
+Plug 'racer-rust/vim-racer'
+" }}}
 " misc {{{
 Plug 'i-sinister/vim-todo'
 " }}}
