@@ -1,6 +1,6 @@
 " vim: se ff=unix
 " Color scheme {{{
-set t_Co=256
+set term=xterm-256color
 set background=light
 " }}}
 " General {{{
