@@ -38,7 +38,7 @@ Plug 'scrooloose/nerdcommenter'
 " automatic closing of quotes, parenthesis, brackets, etc.
 Plug 'Raimondi/delimitMate'
 " plugin for visually displaying indent levels
-Plug 'Indent-Guides'
+Plug 'nathanaelkane/vim-indent-guides'
 " end certain structures automatically, e.g. begin/end etc.
 Plug 'tpope/vim-endwise'
 " quotes/tag/brackets handling
