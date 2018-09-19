@@ -1,6 +1,5 @@
 " vim: se ff=unix
 " Color scheme {{{
-set term=xterm-256color
 set background=light
 " }}}
 " General {{{
@@ -29,12 +28,6 @@ set list
 " requires Lucida Console font
 set listchars=tab:→\ ,space:·,trail:°,extends:…,precedes:…,eol:¬
 " update terminal title
-" screen/tmux use different escape sequences
-if &term == "screen-256color"
-  set t_ts=]2;
-  set t_fs=\\;
-endif
-set title
 autocmd BufEnter * let &titlestring = expand("%:t")
 " restore original title
 autocmd VimLeave * set notitle
