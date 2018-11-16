@@ -9,6 +9,8 @@ Plug 'rking/ag.vim'
 " fzf is installed and managed externally
 Plug 'junegunn/fzf', { 'dir': '~/bin/fzf' }
 Plug 'junegunn/fzf.vim'
+" register popup
+Plug 'junegunn/vim-peekaboo'
 " file drawer
 Plug 'scrooloose/nerdtree'
 " status line {{{
@@ -97,7 +99,6 @@ Plug 'i-sinister/vim-todo'
 " global search & replace
 "Plug 'greplace.vim'
 "haya14busa/incsearch.vim
-"junegunn/fzf
 "christoomey/vim-tmux-navigator
 "tpope/vim-unimpaired
 " jaxbot/browserlink.vim
