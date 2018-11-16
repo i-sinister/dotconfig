@@ -1,0 +1,340 @@
+snippet     specification
+abbr        specification
+alias       spec
+	openapi: '3.0.0'
+	info:
+	  version: 1.0.0
+	  title: ${1}
+	  description: ${2}
+	servers:
+	  # nswag puts whateven follows variable to the route path and there is no way
+	  # to override this behavior; so we have to put service root path to the
+	  # variable not the url
+	  - url: '{deployment}/openApi'
+	    description: ${1}
+	    variables:
+	      deployment:
+	        default: http://localhost:${3}/${4}/WebAPI/v1" />
+	        description: ${2}
+	security:
+	  - bearerAuth: []
+	paths:
+	components:
+	  securitySchemes:
+	    bearerAuth:
+	      type: http
+	      scheme: bearer
+	      bearerFormat: JWT
+	      description: Token issues by PIWorks Authentication Service
+	  responses:
+	    NotFound:
+	      description: The specified resource was not found
+	    BadRequest:
+	      description: Server could not understand the request due to invalid syntax
+	      content:
+	        application/json:
+	          schema:
+	            $ref: '#/components/schemas/ModelError'
+	    UnauthorizedError:
+	      description: Authentication token is missing or invalid
+	    UnprocessableEntity:
+	      description: Server was unable to process request
+	      content:
+	        application/json:
+	          schema:
+	            type: string
+	            description: Error description
+	    ServerError:
+	      description: Internal Server Error
+	      content:
+	        application/json:
+	          schema:
+	            $ref: "#/components/schemas/ServerError"
+	  schemas:
+	    ServerError:
+	      type: object
+	      description: Unexpected error occured when processing request
+	      nullable: true
+	      required:
+	        - message
+	      properties:
+	        message:
+	          description: |
+	            Gets or sets the high-level, user-visible message explaining the cause
+	            of the error.
+	          type: string
+	          example: An error has occurred
+	        exceptionMessage:
+	          description: Exception message
+	          type: string
+	          nullable: true
+	          default: null
+	          example: |
+	            ORA-12516: TNS:listener could not find available handler with matching protocol stack
+	        exceptionType:
+	          description: Exception type
+	          type: string
+	          nullable: true
+	          default: null
+	          example: System.AggregateException
+	        stackTrace:
+	          description: Representation of the immediate frames on the call stack
+	          type: string
+	          nullable: true
+	          default: null
+	          example: at OracleInternal.ConnectionPool.PoolManager\`3.Get
+	        innerException:
+	          description: Exception that caused the current exception
+	          nullable: true
+	          allOf:
+	            - $ref: '#/components/schemas/ServerError'
+	        innerExceptions:
+	          description: Array of additional exceptions
+	          type: array
+	          nullable: true
+	          items:
+	            $ref: '#/components/schemas/ServerError'
+	      example:
+	        message: An error has occurred
+	        exceptionMessage: Sequence contains more than one element
+	        exceptionType: System.InvalidOperationException
+	        stackTrace: |
+	          at System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable\`1 source)
+	          at PIWorks.Data.PomPrmService.OpenApi.ClassFieldConverter.TryGetAlias(IEnumerable\`1 fields, String dbColumnName)
+	    ModelError:
+	      description: Request data is not valid
+	      nullable: true
+	      required:
+	        - message
+	        - errors
+	      properties:
+	        message:
+	          description: Textual description of an error
+	          type: string
+	          example: The request is invalid.
+	        errors:
+	          description: Detailed description of errors
+	          type: object
+	          nullable: true
+	          additionalProperties:
+	            type: array
+	            items:
+	              type: string
+	          example:
+	            objectGrouping:
+	              - 'Field LocalAreaCode does not exist'
+	      example:
+	        message: The request is invalid,
+	        errors:
+	          objectGrouping:
+	            - 'Field LocalAreaCode does not exist'
+
+snippet     add get operation
+abbr        add get operation
+alias       getop
+options     head indent
+	get:
+	  operationId: ${1}
+	  summary: ${2}
+	  tags:
+	    - ${3}
+	  parameters:
+	  responses:
+	    '200':
+	      $ref: '#/components/responses/${4}'
+	    '400':
+	      $ref: '#/components/responses/BadRequest'
+	    '401':
+	      $ref: '#/components/responses/UnauthorizedError'
+	    '404':
+	      $ref: '#/components/responses/NotFound'
+	    '500':
+	      $ref: '#/components/responses/ServerError'
+	    default:
+	      $ref: '#/components/responses/ServerError'
+
+snippet     add post operation
+abbr        add post operation
+alias       postop
+options     head indent
+	post:
+	  operationId: ${1}
+	  summary: ${2}
+	  tags:
+	    - ${3}
+	  parameters:
+	  requestBody:
+	    # NSwag does not undestand request body references so we have to inline
+	    description: ${4}
+	    required: true
+	    content:
+	      application/json:
+	        schema:
+	        example:
+	          - ${5}
+	  responses:
+	    '200':
+	      $ref: '#/components/responses/${6}'
+	    '400':
+	      $ref: '#/components/responses/BadRequest'
+	    '401':
+	      $ref: '#/components/responses/UnauthorizedError'
+	    '404':
+	      $ref: '#/components/responses/NotFound'
+	    '500':
+	      $ref: '#/components/responses/ServerError'
+	    default:
+	      $ref: '#/components/responses/ServerError'
+
+snippet     add operation parameter
+abbr        aop
+alias       aop
+options     head indent
+	 - $ref: '#/components/parameters/${1}'
+
+snippet     add operation response
+abbr        add operation response
+alias       opresp
+options     head indent
+	'${1:200}':
+	  $ref: '#/components/responses/${2}'
+
+snippet     add parameters
+abbr        add paramter
+alias       param
+options     head indent
+	${1}:
+	  name: ${1}
+	  in: path
+	  required: true
+	  description: ${2}
+	  schema:
+	    $ref: '#/components/schemas/${1}'
+
+snippet     add response
+abbr        add response
+alias       resp
+options     head indent
+	${1}:
+	  description: ${2}
+	  content:
+	    application/json:
+	      schema:
+	          $ref: '#/components/schemas/${1}'
+
+snippet     add array response
+abbr        add array response
+alias       aresp
+options     head indent
+	${1}Array:
+	  description: ${2}
+	  content:
+	    application/json:
+	      schema:
+	        description: ${2}
+	        type: array
+	        items:
+	          $ref: '#/components/schemas/${1}'
+	        example:
+	          - ${3}
+	          - ${3}
+
+snippet     add int schema object
+abbr        add int schema object
+alias       intso
+options     head indent
+	${1}:
+	  description: ${2}
+	  type: integer
+	  format: int32
+	  example: 42
+
+snippet     add schema object
+abbr        add schema object
+alias       scho
+options     head indent
+	${1}:
+	  description: ${2}
+	  type: object
+	  nullable: true
+	  required:
+	    - ${3}
+	  properties:
+	  example:
+
+snippet     add inherited schema object
+abbr        add inherited schema object
+alias       iso
+options     head indent
+	${1}:
+	  allOf:
+	    - $ref: '#/components/schemas/${2}'
+	    - type: object
+	      properties:
+
+snippet     add property
+abbr        add property
+alias       prop
+options     head word indent
+	${1}:
+	  $ref: '#/components/schemas/${2}'
+
+snippet     add string property
+abbr        add string property
+alias       strprop
+options     head indent
+	${1}:
+	  description: ${2}
+	  type: string
+
+snippet     add date property
+abbr        add date property
+alias       dtprop
+options     head indent
+	${1}:
+	  description: ${2}
+	  type: string
+	  format: date-time
+
+snippet     add uuid property
+abbr        add uuid property
+alias       uprop
+options     head indent
+	${1}:
+	  description: ${2}
+	  type: string
+	  format: uuid
+
+snippet     add int property
+abbr        add int property
+alias       iprop
+options     head indent
+	${1}:
+	  description: ${2}
+	  type: integer
+	  format: int32
+
+snippet     add long property
+abbr        add long property
+alias       lprop
+options     head indent
+	${1}:
+	  description: ${2}
+	  type: integer
+	  format: int64
+
+snippet     add array property
+abbr        add array property
+alias       aprop
+options     head indent
+	${1}:
+	  description: ${2}
+	  type: array
+	  items:
+	    $ref: '#/components/schemas/${3}'
+
+snippet     referenced schema
+abbr        referenced schema
+alias       refs
+options     head indent
+	$ref: '#/components/schemas/${1}'
