@@ -25,8 +25,6 @@ export FZF_DEFAULT_COMMAND='ag --hidden --path-to-ignore ~/.ignore -g ""'
 export FZF_CTRL_T_COMMAND='ag --hidden --path-to-ignore ~/.ignore -g ""'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source ~/.config/zsh/fzf.sh
-source ~/.config/zsh/fzf_git.sh
-source ~/.config/zsh/fzf_tmux.sh
 # interactive cd: https://github.com/changyuheng/zsh-interactive-cd
 source ~/.config/zsh/zsh-interactive-cd.plugin.zsh
 # common aliases
