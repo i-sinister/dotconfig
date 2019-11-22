@@ -24,6 +24,7 @@ nnoremap <Leader>ob :FzfBuffers<CR>
 nnoremap <Leader>sl :FzfBLines<CR>
 nnoremap <Leader>sa :FzfLines<CR>
 nnoremap <Leader>ma :FzfMaps<CR>
+nnoremap <Leader>rf :FzfHistory<CR>
 " }}}
 " NERDTree {{{
 nnoremap <Leader>n :NERDTreeToggle<CR>
@@ -91,6 +92,8 @@ autocmd FileType less set omnifunc=csscomplete#CompleteCSS
 let g:neocomplete#enable_at_startup = 1
 " Use smartcase.
 let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#enable_fuzzy_completion = 1
+let g:neocomplete#enable_auto_select = 1
 " Set minimum syntax keyword length.
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'

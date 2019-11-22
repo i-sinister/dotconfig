@@ -160,6 +160,8 @@ nnoremap <Leader>ff :vimgrep /<C-r><C-w>/j
 nnoremap <Leader>gf :grep <C-r><C-w><Space>%<CR>
 " search word under cursor in using grep
 nnoremap <Leader>gff :grep <C-r><C-w>
+" replace word under cursor
+noremap <Leader>r :%s/<C-r><C-w>//g<Left><Left>
 " }}}
 " vimrc {{{
 " edit vimrc

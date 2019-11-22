@@ -2,6 +2,12 @@
 " color schemes {{{
 Plug 'sjl/badwolf'
 Plug 'altercation/vim-colors-solarized'
+Plug 'nightsense/wonka'
+Plug 'vim-scripts/tomatosoup.vim'
+Plug 'wmvanvliet/vim-blackboard'
+Plug 'benburrill/potato-colors'
+Plug 'KKPMW/distilled-vim'
+Plug 'Addisonbean/Vim-Xcode-Theme'
 " }}}
 " 'ag' searching integration
 Plug 'rking/ag.vim'
@@ -89,6 +95,9 @@ Plug 'davidhalter/jedi-vim'
 " rust {{{
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
+" }}}
+" avro {{{
+Plug 'gurpreetatwal/vim-avro'
 " }}}
 " misc {{{
 Plug 'i-sinister/vim-todo'
