@@ -28,6 +28,10 @@ Plug 'mhinz/vim-startify'
 Plug 'airblade/vim-rooter'
 " source control {{{
 Plug 'ludovicchabant/vim-lawrencium'
+Plug 'tpope/vim-fugitive'
+Plug 'sodapopcan/vim-twiggy'
+Plug 'junegunn/gv.vim'
+Plug 'airblade/vim-gitgutter'
 " }}}
 "async external commands with output in vim
 Plug 'tpope/vim-dispatch'
