@@ -5,13 +5,13 @@
 # * rofi
 
 # bind following to the shortcut:
-# bash -c "~/bin/attach_tmux_project.sh"
+# bash -c "~/.config/bin/tmux_project_attach.sh"
 
 
 tmuxinator list \
     | tail -n 1 \
     | xargs -n 1 \
-    | rofi -dmenu \
+    | rofi -dmenu -matching fuzzy -sort -p "projects"\
     | while read project;
 do
     xfce4-terminal --maximize --hide-borders --hide-menubar --hide-toolbar -e "tmuxinator $project"

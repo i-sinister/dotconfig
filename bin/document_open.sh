@@ -6,15 +6,13 @@
 # * exo-open
 
 # bind following to the shortcut:
-# bash -c "~/bin/open_document.sh"
+# bash -c "~/.config/bin/document_open.sh"
 
-if [ -n "$1" ]
-then
-    cd $1
-fi
+folder=${1:-~/Documents}
 
 ag --hidden --path-to-ignore ~/.ignore -g "" \
-	| rofi -dmenu -matching fuzzy -sort \
+    -Q $folder \
+	| rofi -dmenu -matching fuzzy -sort -p "documents" \
 	| while read doc;
 do
 	exo-open "$doc"
