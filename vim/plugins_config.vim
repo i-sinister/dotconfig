@@ -14,7 +14,21 @@ map <Leader>l <Plug>(easymotion-lineforward)
 " }}}
 " fzf.vim {{{
 " fzf provides Ag command 
+function! s:build_quickfix_list(lines)
+  call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+  copen
+  cc
+endfunction
+
+let g:fzf_action = {
+  \ 'ctrl-q': function('s:build_quickfix_list'),
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
 let g:fzf_command_prefix = 'Fzf'
+let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
+
 nnoremap <Leader>o :FzfAg<CR>
 " open 'Mercurial' (from the repo)
 nnoremap <Leader>om :call fzf#run(fzf#wrap({'source': 'hg status --modified --clean --unknown --no-status'}))<CR>
