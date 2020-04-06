@@ -10,6 +10,7 @@ source $VIM_CFG/global.vim
 source $VIM_CFG/extensions.vim
 " plugins configuration
 source $VIM_CFG/plugins_config.vim
+source $VIM_CFG/plugin_omnisharp.vim
 " configure vim-plug
 " directory for plugins
 if !isdirectory(expand($VIM_VAR.'/plugged'))

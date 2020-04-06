@@ -79,7 +79,7 @@ let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 let g:syntastic_html_checkers=['jslint']
 let g:syntastic_less_lessc_args = '--npm-import="prefix=~"'
 " requires omnisharp
-let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
+let g:syntastic_cs_checkers = ['code_checker']
 let g:syntastic_javascript_checkers = ['eslint', 'jshint']
 let g:syntastic_mode_map = { 'mode': 'active',
 	\ 'active_filetypes': ['html', 'js', 'less'] }

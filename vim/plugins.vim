@@ -91,7 +91,7 @@ Plug 'JulesWang/css.vim'
 Plug 'genoma/vim-less'
 "}}}
 " c-sharp {{{
-" Plug 'OmniSharp/omnisharp-vim'
+Plug 'OmniSharp/omnisharp-vim'
 " }}}
 " python {{{
 Plug 'davidhalter/jedi-vim'
