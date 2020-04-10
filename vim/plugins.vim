@@ -44,6 +44,7 @@ Plug 'Shougo/neocomplete.vim'
 " sql formatter
 Plug 'vim-scripts/SQLUtilities'
 Plug 'vim-scripts/Align'
+Plug 'tpope/vim-unimpaired'
 " text editing {{{
 " commenting
 Plug 'scrooloose/nerdcommenter'
@@ -66,6 +67,8 @@ Plug 'vimwiki/vimwiki'
 " code snippets
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
+" editor config
+Plug 'editorconfig/editorconfig-vim'
 " }}}
 " json {{{
 Plug 'tpope/vim-jdaddy'

@@ -177,7 +177,7 @@ nnoremap <A-o> o<Esc>
 " Y yank everything from the cursor to the end of the line.
 " This makes Y act more like C or D because by default
 noremap Y y$
-" select test just pasted
+" select text just pasted
 nnoremap gV `[v`]
 " Stay in visual mode when indenting
 vnoremap < <gv
@@ -192,10 +192,6 @@ nmap <Leader>P "+P
 "Don't ask to save when changing buffers (i.e. when jumping to a type definition)
 set hidden
 set switchbuf=usetab
-nnoremap b<CR> :b <C-Z>
-nnoremap bs :buffers<CR>:buffer<Space>
-nnoremap ]b :bnext<CR>
-nnoremap [b :bprevious<CR>
 "}}}
 " splits {{{
 set splitbelow
@@ -206,8 +202,6 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 " }}}
 " Tabs {{{
-nnoremap [t :tabprevious<CR>
-nnoremap ]t :tabnext<CR>
 nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
 " }}}
