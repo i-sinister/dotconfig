@@ -1,5 +1,5 @@
 fzfhelp() {
-  cat << EOF
+  cat << 'EOF'
 Fzf key bindings:
   CTRL-T - Paste the selected file path(s) into the command line
   CTRL-R - Paste the selected command from history into the command line
