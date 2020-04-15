@@ -191,6 +191,9 @@ let g:jedi#rename_command = "<LocalLeader>jr"
 " au FileType rust nmap gx <Plug>(rust-def-vertical)
 " au FileType rust nmap <leader>gd <Plug>(rust-doc)
 " }}}
+" fugitive {{{
+autocmd BufReadPost fugitive://* set bufhidden=delete
+" }}}
 
 
 

@@ -20,7 +20,7 @@ alias ff='find . -type f -name'
 
 # git
 alias gs="git status"
-alias gd="git difftool"
+alias git_gc="git reflog expire --expire-unreachable=now --all && git gc --prune=now"
 
 # du
 alias dud='du -d 1 -h'
@@ -33,3 +33,5 @@ alias ag='ag --path-to-ignore ~/.ignore'
 # initialize task repo in current folder
 alias task_init_here='echo '"'"'data.location=tasks'"'"' > .taskrc; mkdir ./tasks;'
 alias taskl='task rc:.taskrc'
+
+alias oskm='cat ~/.config/vim/plugin_omnisharp.vim | grep autocmd\ FileType\ cs | cut -f 6- -d '"'"' '"'"' | fzf'
