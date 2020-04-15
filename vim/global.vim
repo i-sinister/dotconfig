@@ -206,16 +206,32 @@ nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
 " }}}
 " QuickFix list {{{
-nnoremap <C-c><C-n> :cnext<CR>
-nnoremap <C-c><C-p> :cprevious<CR>
 nnoremap <C-c>o :cope<CR>
 nnoremap <C-c>c :ccl<CR>
+nnoremap <C-c>f :QFilterFiles 
+nnoremap <C-c>e :QFilterErrors<CR>
+nnoremap <C-c>w :QFilterWarnings<CR>
+function! s:QuickfixListFilterFiles(bang, pattern)
+  let cmp = a:bang ? '!~' : '=~'
+  call setqflist(filter(getqflist(), "bufname(v:val['bufnr']) " . cmp . " a:pattern"))
+endfunction
+command! -bang -nargs=1 -complete=file QFilterFiles call s:QuickfixListFilterFiles(<bang>0, <q-args>)
+command! QFilterErrors call setqflist(filter(getqflist(), "v:val['type'] =~ 'e'"))
+command! QFilterWarnings call setqflist(filter(getqflist(), "v:val['type'] =~ 'w'"))
 " }}}
 " Location list {{{
-nnoremap <C-l><C-n> :lnext<CR>
-nnoremap <C-l><C-p> :lprev<CR>
 nnoremap <C-l>o :lop<CR>
 nnoremap <C-l>c :lcl<CR>
+nnoremap <C-l>f :LocationFilterFiles 
+nnoremap <C-l>e :LocationFilterErrors<CR>
+nnoremap <C-l>w :LocationFilterErrors<CR>
+function! s:LocationFilterFiles(bang, pattern)
+  let cmp = a:bang ? '!~' : '=~'
+  call setloclist(0, filter(getloclist(0), "bufname(v:val['bufnr']) " . cmp . " a:pattern"))
+endfunction
+command! -bang -nargs=1 -complete=file LFilter call s:LocationFilterFiles(<bang>0, <q-args>)
+command! LocationFilterErrors call setloclist(0, filter(getloclist(0), "v:val['type'] == 'E'"))
+command! LocationFilterWarnings call setloclist(0, filter(getloclist(0), "v:val['type'] == 'W'"))
 " }}}
 " File handling {{{
 " use current edited files directory in command line
