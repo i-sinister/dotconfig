@@ -4,6 +4,7 @@ let g:OmniSharp_server_stdio = 1
 let g:OmniSharp_highlight_types = 3
 let g:OmniSharp_loopup_metadata = 1
 let g:OmniSharp_typeLookupInPreview = 1
+let g:OmniSharp_want_snippet = 0
 let g:omnicomplete_fetch_full_documentation = 1
 
 
@@ -12,7 +13,8 @@ augroup omnisharp_commands
 	"Set autocomplete function to OmniSharp (if not using YouCompleteMe completion plugin)
 	autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
 	autocmd FileType cs nnoremap <buffer> <C-r><C-b> :wa!<CR>:OmniSharpBuildAsync<CR>
-	autocmd FileType cs nnoremap <buffer> <C-r><C-t> :wa!<CR>:OmniSharpRunTestsInFile<CR>
+	autocmd FileType cs nnoremap <buffer> <C-r><C-t> :wa!<CR>:OmniSharpRunTest<CR>
+	autocmd FileType cs nnoremap <buffer> <C-r><C-f> :wa!<CR>:OmniSharpRunTestsInFile<CR>
 	autocmd FileType cs nnoremap <buffer> <C-r><C-a> :wa!<CR>:OmniSharpRunTests<CR>
 	" Find all code errors/warnings for the current solution and populate the quickfix window
 	autocmd FileType cs nnoremap <buffer> <C-r><C-c> :OmniSharpGlobalCodeCheck<CR>
@@ -26,12 +28,11 @@ augroup omnisharp_commands
 	autocmd FileType cs nnoremap <buffer> <C-f><C-s> :OmniSharpFindSymbol<CR>
 	autocmd FileType cs nnoremap <buffer> <C-f><C-u> :OmniSharpFindUsages<CR>
 	autocmd FileType cs nnoremap <buffer> <C-f><C-m> :OmniSharpFindMembers<CR>
-	autocmd FileType cs nnoremap <buffer> <C-l><C-t> :OmniSharpTypeLookup<CR>
-	autocmd FileType cs nnoremap <buffer> <C-l><C-d> :OmniSharpDocumentation<CR>
 	autocmd FileType cs nnoremap <buffer> <C-p><C-d> :OmniSharpPreviewDefinition<CR>
 	autocmd FileType cs nnoremap <buffer> <C-p><C-i> :OmniSharpPreviewImplementation<CR>
-	autocmd FileType cs nnoremap <buffer> <C-h> :OmniSharpSignatureHelp<CR>
-	autocmd FileType cs inoremap <buffer> <C-h><C-h>:OmniSharpSignatureHelp<CR>
+	autocmd FileType cs nnoremap <buffer> <C-h><C-h> :OmniSharpSignatureHelp<CR>
+	autocmd FileType cs nnoremap <buffer> <C-h><C-t> :OmniSharpTypeLookup<CR>
+	autocmd FileType cs nnoremap <buffer> <C-h><C-d> :OmniSharpDocumentation<CR>
 	" Add syntax highlighting for types and interfaces
 	autocmd FileType cs nnoremap <buffer> <C-s><C-h> :OmniSharpHighlightTypes<CR>
 	" Contextual code actions (requires CtrlP or unite.vim)

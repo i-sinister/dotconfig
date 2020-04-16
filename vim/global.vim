@@ -18,6 +18,7 @@ set backspace=indent,eol,start
 " ui elements
 set number
 set relativenumber
+set signcolumn=auto
 set showcmd
 set showmode
 set cursorline
@@ -32,22 +33,25 @@ autocmd BufEnter * let &titlestring = expand("%:t")
 " restore original title
 autocmd VimLeave * set notitle
 " }}}
-" Layout {{{
+" Command mode {{{
+" enter command mode without pressing shift
+nnoremap ; :
+" Remove 'Press Enter to continue' message when type information is longer than one line.
+set cmdheight=2
+" enable wildmenu
 set wildmenu
 set wildmode=longest:full
 set wildchar=<Tab>
 set wildcharm=<C-Z>
-" don't autoselect first item in omnicomplete, show if only
-" one item (for preview); remove preview if you don't want
-" to see any documentation whatsoever.
-set completeopt=longest,menuone,preview
-" Move the preview window (code documentation) to the bottom of the
-" screen, so it doesn't move the code!
-set splitbelow
-" Remove 'Press Enter to continue' message when type information is longer than one line.
-set cmdheight=2
 " }}}
-" filetype {{{
+" Autocompletion {{{
+set completeopt=menuone,preview,noinsert,noselect
+set shortmess+=c
+" <TAB>: completion.
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+" }}}
+" Filetype {{{
 filetype indent on
 filetype plugin on
 syntax enable
@@ -100,10 +104,6 @@ set foldnestmax=10
 set foldenable
 set foldlevelstart=10
 " }}}
-" command mode {{{
-" enter command mode without pressing shift
-nnoremap ; :
-" }}}
 " Search {{{
 " use ag for grepping
 set grepprg=ag\ --nogroup\ --nocolor\ --path-to-ignore\ ~/.ignore
@@ -116,19 +116,14 @@ set hlsearch
 " use common regex syntax for search, not vims one
 nnoremap / /\v
 vnoremap / /\v
-" use <tab> to match brackets 
-nnoremap <tab> %
-vnoremap <tab> %
 " open quickfix/locations after *grep commands
 augroup auto_quickfix_location_open
     autocmd!
     autocmd QuickFixCmdPost [^l]* cwindow
     autocmd QuickFixCmdPost l*    lwindow
 augroup END
-" semicolon is mapped to enter command mode
-nnoremap : ;
 " }}}
-" Move shortcuts {{{
+" Movement {{{
 " quick exit insert mode
 inoremap jj <Esc>
 " disable arrows
@@ -153,13 +148,13 @@ set timeoutlen=500
 " }}}
 " Search commands {{{
 " search word under cursor in the current buffer
-nnoremap <Leader>f :vimgrep /<C-r><C-w>/j<Space>%<CR>
+nnoremap <Leader>fv :vimgrep /<C-r><C-w>/j<Space>%<CR>
 " search word under cursor in
-nnoremap <Leader>ff :vimgrep /<C-r><C-w>/j
+nnoremap <Leader>fvf :vimgrep /<C-r><C-w>/j
 " search word under cursor in the current buffer using grep
-nnoremap <Leader>gf :grep <C-r><C-w><Space>%<CR>
+nnoremap <Leader>fg :grep <C-r><C-w><Space>%<CR>
 " search word under cursor in using grep
-nnoremap <Leader>gff :grep <C-r><C-w>
+nnoremap <Leader>fgf :grep <C-r><C-w>
 " replace word under cursor
 noremap <Leader>r :%s/<C-r><C-w>//g<Left><Left>
 " }}}
@@ -169,7 +164,7 @@ nmap <Leader>ev ;e $MYVIMRC<CR>
 " reload vimrc
 nmap <Leader>sv ;so $MYVIMRC<CR>
 " }}}
-" Editing shortcuts {{{
+" Text editing {{{
 " break line at cursor
 nnoremap K i<CR><Esc>
 " insert empty line after current line
@@ -193,7 +188,9 @@ nmap <Leader>P "+P
 set hidden
 set switchbuf=usetab
 "}}}
-" splits {{{
+" Splits {{{
+" Move the preview window (code documentation) to the bottom of the
+" screen, so it doesn't move the code!
 set splitbelow
 set splitright
 nnoremap <C-J> <C-W><C-J>
@@ -233,20 +230,21 @@ command! -bang -nargs=1 -complete=file LFilter call s:LocationFilterFiles(<bang>
 command! LocationFilterErrors call setloclist(0, filter(getloclist(0), "v:val['type'] == 'E'"))
 command! LocationFilterWarnings call setloclist(0, filter(getloclist(0), "v:val['type'] == 'W'"))
 " }}}
+" Preview window {{{
+nnoremap <C-p>c :pclose<CR>
+" }}}
 " File handling {{{
 " use current edited files directory in command line
 cabbr <expr> %% expand('%:p:h')
 " fast save
 nnoremap <Leader>w :w<CR>
-" edit file in the current directory
-nnoremap <Leader>e :e <C-R>=expand('%:p:h') . '/'<CR>
 " put current file path to the current buffer
 nnoremap <Leader>pp :put =expand('%:p')<CR>
+nnoremap <Leader>pd :put =expand('%:p:h')<CR>
+nnoremap <Leader>pf :put =expand('%')<CR>
 " yank file path
 nnoremap <Leader>yp :let @"=expand("%:p")<CR>
-" yank directory path
-nnoremap <Leader>yh :let @"=expand("%:p:h")<CR>
-" yank file Name
+nnoremap <Leader>yd :let @"=expand("%:p:h")<CR>
 nnoremap <Leader>yf :let @"=expand("%")<CR>
 " cd to the currenty edited file
 nnoremap <Leader>cd :cd %:p:h<CR>

@@ -25,20 +25,37 @@ let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
+" match colors with colorscheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 
-let g:fzf_command_prefix = 'Fzf'
+let g:fzf_command_prefix = 'F'
 let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
 
-nnoremap <Leader>o :FzfAg<CR>
-" open 'Mercurial' (from the repo)
-nnoremap <Leader>om :call fzf#run(fzf#wrap({'source': 'hg status --modified --clean --unknown --no-status'}))<CR>
-nnoremap <Leader>of :FzfFiles<CR>
-nnoremap <Leader>od :execute 'FzfFiles '.expand('%:p:h')<CR>
-nnoremap <Leader>ob :FzfBuffers<CR>
-nnoremap <Leader>sl :FzfBLines<CR>
-nnoremap <Leader>sa :FzfLines<CR>
-nnoremap <Leader>ma :FzfMaps<CR>
-nnoremap <Leader>rf :FzfHistory<CR>
+nnoremap <Leader>fw :FAg <C-R><C-W><CR>
+nnoremap <Leader>f :FAg<CR>
+nnoremap <Leader>of :FFiles<CR>
+nnoremap <Leader>od :execute 'FFiles '.expand('%:p:h')<CR>
+nnoremap <Leader>ob :FBuffers<CR>
+nnoremap <Leader>ow :FWindows<CR>
+nnoremap <Leader>oma :FMarks<CR>
+nnoremap <Leader>ot :FTags<CR>
+nnoremap <Leader>fl :FBLines<CR>
+nnoremap <Leader>fal :FLines<CR>
+nnoremap <Leader>fm :FMaps<CR>
+nnoremap <Leader>fh :FHistory<CR>
 " }}}
 " NERDTree {{{
 nnoremap <Leader>n :NERDTreeToggle<CR>
@@ -52,9 +69,8 @@ let NERDTreeMinimalUI = 1
 " highlight results
 let g:ag_highlight=1
 let g:ag_working_path_mode="r"
-nnoremap <C-f> :Ag!<Space>
-nnoremap <C-f>w :Ag!<Space><cword><CR>
-nnoremap <C-s> :AgFile!<Space>
+nnoremap <Leader>faf :Ag!<Space>
+nnoremap <Leader>fa :Ag!<Space><cword><CR>
 " }}}
 " rooter {{{
 " for files that are not under the project change directory to files directory
@@ -107,7 +123,7 @@ let g:neocomplete#enable_at_startup = 1
 " Use smartcase.
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#enable_fuzzy_completion = 1
-let g:neocomplete#enable_auto_select = 1
+let g:neocomplete#enable_auto_select = 0
 " Set minimum syntax keyword length.
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
@@ -117,19 +133,15 @@ if !exists('g:neocomplete#keyword_patterns')
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 " Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
+inoremap <expr><C-g> neocomplete#undo_completion()
+inoremap <expr><C-l> neocomplete#complete_common_string()
 " accept suggestion
-inoremap <expr><C-y>  neocomplete#close_popup()
+inoremap <expr><C-y> neocomplete#close_popup()
 " reject suggestion
-inoremap <expr><C-e>  neocomplete#cancel_popup()
-" <TAB>: completion.
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><C-e> neocomplete#cancel_popup()
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-" AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -150,6 +162,7 @@ let g:neosnippet#snippets_directory='~/.config/vim/snippets/'
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
+imap <C-k><C-k> NeoSnippetClearMarkers
 
 " SuperTab like snippets' behavior.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
@@ -193,6 +206,8 @@ let g:jedi#rename_command = "<LocalLeader>jr"
 " }}}
 " fugitive {{{
 autocmd BufReadPost fugitive://* set bufhidden=delete
+" not really related bu fugitive, but git: start git view
+nnoremap <Leader>gvk :silent! !git view&<CR>
 " }}}
 
 
