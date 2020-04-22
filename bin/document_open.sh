@@ -8,10 +8,18 @@
 # bind following to the shortcut:
 # bash -c "~/.config/bin/document_open.sh"
 
-folder=${1:-~/Documents}
+folders=
+for folder in "$@"; do
+    folders="$folders -Q $folder"
+done
+if [ -z "$folders" ]
+then
+    folders=~/Documents
+    folders="-Q ${folders}"
+fi
 
 ag --hidden --path-to-ignore ~/.ignore -g "" \
-    -Q $folder \
+    $folders \
 	| rofi -dmenu -matching fuzzy -sort -p "documents" \
 	| while read doc;
 do
