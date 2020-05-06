@@ -69,6 +69,7 @@ Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 " editor config
 Plug 'editorconfig/editorconfig-vim'
+Plug 'majutsushi/tagbar'
 " }}}
 " json {{{
 Plug 'tpope/vim-jdaddy'

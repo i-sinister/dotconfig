@@ -209,6 +209,27 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 " not really related bu fugitive, but git: start git view
 nnoremap <Leader>gvk :silent! !git view&<CR>
 " }}}
+" tagbar {{{
+let g:tagbar_ctags_bin = '/usr/bin/ctags-universal'
+let g:tagbar_type_yaml = {
+    \ 'ctagstype' : 'openapi',
+    \ 'kinds'     : [
+        \ 'o:operations:0:0',
+        \ 's:schemas:0:0',
+        \ 'r:responses:0:0',
+        \ 'p:parameters:0:0',
+        \ 'b:request bodies:0:0',
+        \ 'h:headers:0:0',
+        \ 'l:links:0:0',
+        \ 'e:examples:0:0',
+        \ 'c:callback:s:0:0',
+        \ 'y:sschemas:0:0'
+    \ ],
+    \ 'sro'        : '>',
+    \ 'kind2scope' : { },
+    \ 'scope2kind' : { }
+\ }
+" }}}
 
 
 
