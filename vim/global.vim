@@ -239,13 +239,23 @@ cabbr <expr> %% expand('%:p:h')
 " fast save
 nnoremap <Leader>w :w<CR>
 " put current file path to the current buffer
-nnoremap <Leader>pp :put =expand('%:p')<CR>
-nnoremap <Leader>pd :put =expand('%:p:h')<CR>
-nnoremap <Leader>pf :put =expand('%')<CR>
+nnoremap <Leader>pp a<C-R>=expand('%:p')<CR><Esc>
+nnoremap <Leader>pd a<C-R>=expand('%:p:h')<CR><Esc>
+nnoremap <Leader>pr a<C-R>=expand('%')<CR><Esc>
+nnoremap <Leader>pn a<C-R>=expand('%:t:r')<CR><Esc>
+nnoremap <Leader>pf a<C-R>=expand('%:t')<CR><Esc>
+" paste in insert mode
+inoremap <C-P><C-P> <C-R>=expand('%:p')<CR>
+inoremap <C-P><C-D> <C-R>=expand('%:h')<CR>
+inoremap <C-P><C-R> <C-R>=expand('%')<CR><Esc>
+inoremap <C-P><C-N> <C-R>=expand('%:t:r')<CR>
+inoremap <C-P><C-F> <C-R>=expand('%:r')<CR>
 " yank file path
-nnoremap <Leader>yp :let @"=expand("%:p")<CR>
-nnoremap <Leader>yd :let @"=expand("%:p:h")<CR>
-nnoremap <Leader>yf :let @"=expand("%")<CR>
+nnoremap <Leader>yp :let @+=expand("%:p")<CR>
+nnoremap <Leader>yd :let @+=expand("%:p:h")<CR>
+nnoremap <Leader>yr :let @+=expand("%")<CR>
+nnoremap <Leader>yn :let @+=expand('%:t:r')<CR>
+nnoremap <Leader>yf :let @+=expand('%:t')<CR>
 " cd to the currenty edited file
 nnoremap <Leader>cd :cd %:p:h<CR>
 " }}}
