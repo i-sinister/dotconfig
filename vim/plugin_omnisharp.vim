@@ -43,6 +43,9 @@ augroup omnisharp_commands
 	autocmd FileType cs nnoremap <buffer> <C-k> :OmniSharpNavigateUp<CR>
 	"navigate down by method/property/field
 	autocmd FileType cs nnoremap <buffer> <C-j> :OmniSharpNavigateDown<CR>
+
+	autocmd FileType cs inoremap <buffer> <C-h><C-h> <C-O>:OmniSharpSignatureHelp<CR>
+	autocmd FileType cs inoremap <buffer> <C-h><C-t> <C-O>:OmniSharpTypeLookup<CR>
 augroup END
 
 " Rename without dialog - with cursor on the symbol to rename: `:Rename newname`

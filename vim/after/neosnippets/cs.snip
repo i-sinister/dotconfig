@@ -1,0 +1,414 @@
+snippet namespace
+alias   name
+abbr    namespace { }
+options head
+    namespace ${1:`substitute(expand('%:h'), '\/', '.', 'g')`}
+    { ${0:TARGET}
+    }
+
+snippet addClass
+alias   addc
+abbr    namespace { class {} }
+options head
+    namespace ${1:`substitute(expand('%:h'), '\/', '.', 'g')`}
+    {
+        public class ${2:`expand('%:t:r')`}
+        {
+            ${0:TARGET}
+        }
+    }
+
+snippet addinterface
+alias   addi
+abbr    namespace { interface {} }
+options head
+    namespace ${1:`substitute(expand('%:h'), '\/', '.', 'g')`}
+    {
+        public interface ${2:`expand('%:t:r')`}
+        {
+            ${0:TARGET}
+        }
+    }
+
+snippet addstruct
+alias   addst
+abbr    namespace { struct {} }
+options head
+    namespace ${1:`substitute(expand('%:h'), '\/', '.', 'g')`}
+    {
+        public struct ${2:`expand('%:t:r')`}
+        {
+            ${0:TARGET}
+        }
+    }
+
+snippet addrstruct
+abbr    namespace { readonly struct {} }
+options head
+    namespace ${1:`substitute(expand('%:h'), '\/', '.', 'g')`}
+    {
+        public readonly struct ${2:`expand('%:t:r')`}
+        {
+            ${0:TARGET}
+        }
+    }
+
+snippet addrestruct
+abbr    namespace { ref struct {} }
+options head
+    namespace ${1:`substitute(expand('%:h'), '\/', '.', 'g')`}
+    {
+        public ref struct ${2:`expand('%:t:r')`}
+        {
+            ${0:TARGET}
+        }
+    }
+
+snippet addrrstruct
+abbr    namespace { readonly ref struct {} }
+options head
+    namespace ${1:`substitute(expand('%:h'), '\/', '.', 'g')`}
+    {
+        public readonly ref struct ${2:`expand('%:t:r')`}
+        {
+            ${0:TARGET}
+        }
+    }
+
+snippet class
+abbr    internal class {}
+    internal class ${1:`expand('%:t:r')`}
+    {
+        ${0:TARGET}
+    }
+
+snippet pclass
+abbr    public class {}
+    public class ${1:`expand('%:t:r')`}
+    {
+        ${0:TARGET}
+    }
+
+snippet struct
+abbr    internal struct {}
+    internal struct ${1:`expand('%:t:r')`}
+    {
+        ${0:TARGET}
+    }
+
+snippet rstruct
+abbr    internal readonly struct {}
+options head
+    internal readonly struct ${1:`expand('%:t:r')`}
+    {
+        ${0:TARGET}
+    }
+
+snippet restruct
+abbr    internal ref struct {}
+options head
+    internal ref struct ${1:`expand('%:t:r')`}
+    {
+        ${0:TARGET}
+    }
+
+snippet rrstruct
+abbr    internal readonly ref struct {}
+options head
+    internal readonly ref struct ${1:`expand('%:t:r')`}
+    {
+        ${0:TARGET}
+    }
+
+snippet pstruct
+abbr    public struct {}
+    public struct ${1:`expand('%:t:r')`}
+    {
+        ${0:TARGET}
+    }
+
+snippet prstruct
+abbr    public readonly struct {}
+options head
+    public readonly struct ${1:`expand('%:t:r')`}
+    {
+        ${0:TARGET}
+    }
+
+snippet prestruct
+abbr    public ref struct {}
+options head
+    public ref struct ${1:`expand('%:t:r')`}
+    {
+        ${0:TARGET}
+    }
+
+snippet prrstruct
+abbr    public readonly ref struct {}
+options head
+    public readonly ref struct ${1:`expand('%:t:r')`}
+    {
+        ${0:TARGET}
+    }
+
+snippet interface
+abbr    internal interface {}
+    internal interface ${1:`expand('%:t:r')`}
+    {
+        ${0:TARGET}
+    }
+
+snippet pinterface
+abbr    public interface {}
+    public interface ${1:`expand('%:t:r')`}
+    {
+        ${0:TARGET}
+    }
+
+snippet method
+abbr    private void Method() {}
+    private ${1:void} ${2:#:Method}(${3:#:arguments})
+    {
+        ${0:TARGET}
+    }
+
+snippet pmethod
+abbr    public void Method() {}
+    public ${1:void} ${2:#:Method}(${3:#:arguments})
+    {
+        ${0:TARGET}
+    }
+
+snippet prmethod
+abbr    protected void Method() {}
+    public ${1:void} ${2:#:Method}(${3:#:arguments})
+    {
+        ${0:TARGET}
+    }
+
+snippet imethod
+abbr    internal void Method() {}
+    internal ${1:void} ${2:#:Method}(${3:#:arguments})
+    {
+        ${0:TARGET}
+    }
+
+snippet pimethod
+abbr    protected internal void method() {}
+    protected internal ${1:void} ${2:#:method}(${3:#:arguments})
+    {
+        ${0:TARGET}
+    }
+
+snippet pfield
+abbr    public field
+    public ${1:#:Type} ${2:#:Field};
+
+snippet pufield
+abbr    public readonly field
+    public readonly ${1:#:Type} ${2:#:Field};
+
+snippet prfield
+abbr    private field
+    private ${1:#:Type} ${2:#:Field};
+
+snippet prrfield
+abbr    private readonly field
+    private readonly ${1:#:Type} ${2:#:Field};
+
+snippet ptfield
+abbr    protected field
+    protected ${1:#:Type} ${2:#:Field};
+
+snippet ptrfield
+abbr    protected readonly field
+    protected readonly ${1:#:Type} ${2:#:Field};
+
+snippet ifield
+abbr    internal field;
+    internal ${1:#:Type} ${2:#:Field};
+
+snippet irfield
+abbr    internal readonly field;
+    internal readonly ${1:#:Type} ${2:#:Field};
+
+snippet pifield
+abbr    protected internal field
+    protected internal ${1:#:Type} ${2:#:Field};
+
+snippet pirfield
+abbr    protected internal readonly field
+    protected internal readonly ${1:#:Type} ${2:#:Field};
+
+snippet enum
+abbr    internal enum {}
+    internal enum ${1:`expand('%:t:r')`}
+    {
+        ${0:TARGET},
+    }
+
+snippet penum
+abbr    public enum {}
+    public enum ${1:`expand('%:t:r')`}
+    {
+        ${0:TARGET},
+    }
+
+snippet property
+alias prop
+abbr    public Property { get; set; }
+    public ${1:#:Result} ${2:#:Name} { get${3:;} ${4:private }set${5:;} }${0:TARGET}
+
+snippet prproperty
+abbr    protected Property { get; set; }
+    protected ${1:#:Result} ${2:#:Name} { get${3:;} ${4:private }set${5:;} }${0:TARGET}
+
+snippet operatorEq
+abbr    public static boop operatior ==
+    public static bool operator == (${1:`expand('%:t:r')`} v1, ${2:`expand('%:t:r')`} v2) => v1.Equals(v2);
+    public static bool operator != (${1:`expand('%:t:r')`} v1, ${2:`expand('%:t:r')`} v2) => !v1.Equals(v2);
+
+# Syntax
+snippet if
+abbr    if () {}
+    if (${1:#:condition})
+    {
+        ${0:TARGET}
+    }
+
+snippet elseif
+alias   elif
+abbr    else if () {}
+    else if (${1:#:condition})
+    {
+        ${0:TARGET}
+    }
+
+snippet ifelse
+alias   ifel
+abbr    if () {} else {}
+    if (${1:#:condition})
+    {
+        ${2:TARGET}
+    } else {
+        ${3:TARGET}
+    }
+
+snippet while
+abbr    while () {}
+    while (${1:#:condition})
+    {
+        ${0:TARGET}
+    }
+
+snippet do_while
+alias   dowhile
+abbr    do {} while() {}
+    do
+    {
+        ${0:TARGET}
+    } while (${1:#:condition});
+
+snippet for
+abbr    for () {}
+    for (var ${1:#:var}; ${2:#:condition}; ${3:#:effect})
+    {
+        ${0:TARGET}
+    }
+
+snippet foreach
+alias   fore
+abbr    foreach () {}
+    foreach (var ${1:#:var} in ${2:#:iter})
+    {
+        ${0:TARGET}
+    }
+
+snippet switch
+abbr    switch () {}
+    switch (${1:#:var})
+    {
+        case ${2:#:val}:
+            ${0:TARGET}
+            break;
+        default:
+            break;
+    }
+
+snippet using
+abbr    using () {}
+options head
+    using (var ${1:#:var} = ${2:#:resource})
+    {
+        ${0:TARGET}
+    }
+
+
+# NUnit
+snippet ntestf
+alias   tf
+abbr    ntestf {}
+options head
+    namespace ${1:`substitute(expand('%:h'), '\/', '.', 'g')`}
+    {
+        [TestFixture]
+        public class ${2:`expand('%:t:r')`}
+        {
+            ${2:TARGET}Assert.Fail();
+        }
+    }
+
+snippet [ntest
+options head
+    [Test]
+    public void CheckThat${1:#:Name}()
+    {
+        ${2:TARGET}Assert.Fail();
+    }
+
+snippet ntc
+abbr  [TestCase()]
+options head
+    [TestCase(${0:TARGET})]
+
+snippet ntcf
+abbr  [TestCase(..., TestName = ...)]
+options head
+    [TestCase(
+    ${0:TARGET}
+    TestName = "${1}"
+    )]
+
+snippet ntsetup
+alias   nts
+abbr    [SetUp] public void SetUp()
+options head
+    [SetUp]
+    public void SetUp()
+    {
+        ${0:TARGET}
+    }
+
+snippet ntteardown
+alias   ntt
+abbr    [TearDown] public void TearDown()
+options head
+    [TearDown]
+    public void TearDown()
+    {
+        ${0:TARGET}
+    }
+
+snippet summary
+alias   ///
+abbr   /// <summary></summary>
+    /// <summmary>
+    /// ${0:TARGET}
+    /// </summmary>
+
+snippet remarks
+abbr   /// <remarks></remarks>
+    <remarks>
+    /// ${0:TARGET}
+    /// </remarks>
+

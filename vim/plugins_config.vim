@@ -58,10 +58,10 @@ nnoremap <Leader>fm :FMaps<CR>
 nnoremap <Leader>fh :FHistory<CR>
 " }}}
 " NERDTree {{{
-nnoremap <Leader>n :NERDTreeToggle<CR>
+nnoremap ypn :NERDTreeToggle<CR>
 nnoremap <Leader>l :NERDTreeFind<CR>
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
+"let g:NERDTreeDirArrowExpandable = '▸'
+"let g:NERDTreeDirArrowCollapsible = '▾'
 let g:NERDTreeWinPos = 'right'
 let NERDTreeMinimalUI = 1
 " }}}
@@ -80,7 +80,7 @@ let g:rooter_change_directory_for_non_project_files = 'current'
 let g:rooter_use_lcd = 1
 " }}}
 " airline {{{
-set laststatus=2
+let g:airline_powerline_fonts = 1
 " }}}
 " Syntastic {{{
 let g:syntastic_always_populate_loc_list = 1
@@ -101,6 +101,8 @@ let g:syntastic_mode_map = { 'mode': 'active',
 	\ 'active_filetypes': ['html', 'js', 'less'] }
 " use eslintrc if corresponding file is found
 autocmd FileType javascript let b:syntastic_checkers = findfile('.eslintrc', '.;') != '' ? ['eslint'] : ['jshint']
+" unimpired-like mapping to toggle syntastic: [Toggle][Plugin][Syntastic]
+nnoremap yps :SyntasticToggleMode<CR>
 " }}}
 " vim-javascript {{{
 let g:javascript_plugin_jsdoc = 1
@@ -156,13 +158,13 @@ let g:neocomplete#sources#omni#input_patterns.cs = '.*[^=\);]'
 " }}}
 " neosnippet {{{
 let g:neosnippet#enable_snipmate_compatibility=1
-let g:neosnippet#snippets_directory='~/.config/vim/snippets/'
+let g:neosnippet#snippets_directory='~/.config/vim/neosnippets/'
+
 " Plugin key-mappings.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
-imap <C-k><C-k> NeoSnippetClearMarkers
 
 " SuperTab like snippets' behavior.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
@@ -173,11 +175,6 @@ imap <expr><TAB>
 smap <expr><TAB>
 \ neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-" For conceal markers.
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
 " }}}
 " csharp {{{
 source $VIM_CFG/plugin_omnisharp.vim
@@ -209,6 +206,15 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 " not really related bu fugitive, but git: start git view
 nnoremap <Leader>gvk :silent! !git view&<CR>
 " }}}
+" Startify{{{ 
+let g:startify_bookmarks = [
+  \ '~/.config/vim/global.vim',
+  \ '~/.config/vim/plugins_config.vim',
+  \ '~/.config/zsh/.zshrc',
+  \ '~/.config/tmux/.tmux.conf',
+  \ '~/.config/i3/config',
+  \ ]
+"}}}
 " tagbar {{{
 let g:tagbar_ctags_bin = '/usr/bin/ctags-universal'
 let g:tagbar_type_yaml = {
@@ -229,32 +235,13 @@ let g:tagbar_type_yaml = {
     \ 'kind2scope' : { },
     \ 'scope2kind' : { }
 \ }
+nnoremap ypt :TagbarToggle<CR>
 " }}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+" IntentGuides {{{
+nnoremap ypi :IndentGuidesToggle<CR>
+" }}}
+" gitgutter {{{
+nnoremap ypg :GitGutterToggle<CR>
+" }}}
 
 " vim:foldmethod=marker:foldlevel=0

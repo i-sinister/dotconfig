@@ -8,6 +8,7 @@ Plug 'wmvanvliet/vim-blackboard'
 Plug 'benburrill/potato-colors'
 Plug 'KKPMW/distilled-vim'
 Plug 'Addisonbean/Vim-Xcode-Theme'
+Plug 'morhetz/gruvbox'
 " }}}
 " 'ag' searching integration
 Plug 'rking/ag.vim'
@@ -110,15 +111,5 @@ Plug 'gurpreetatwal/vim-avro'
 " misc {{{
 Plug 'i-sinister/vim-todo'
 " }}}
-" to check {{{
-" vertical alignment tool
-"Plug 'tsaleh/vim-align'
-" global search & replace
-"Plug 'greplace.vim'
-"haya14busa/incsearch.vim
-"christoomey/vim-tmux-navigator
-"tpope/vim-unimpaired
-" jaxbot/browserlink.vim
-" wting/autojump
-"}}
+Plug 'ryanoasis/vim-devicons'
 " vim:foldmethod=marker:foldlevel=0

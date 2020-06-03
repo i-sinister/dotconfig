@@ -1,13 +1,13 @@
 " vim: se ff=unix
 " Color scheme {{{
-set background=light
+set background=dark
 " }}}
 " General {{{
 set nocompatible
 set ttyfast
 set noeol
 set noshellslash
-set encoding=utf-8
+set encoding=UTF-8
 " disable empty new line at the end of text files
 set fileformats+=dos
 set visualbell
@@ -40,9 +40,9 @@ nnoremap ; :
 set cmdheight=2
 " enable wildmenu
 set wildmenu
-set wildmode=longest:full
-set wildchar=<Tab>
-set wildcharm=<C-Z>
+set wildmode=list:longest,list:full
+set wildchar=<C-X>
+set wildcharm=<C-X>
 " }}}
 " Autocompletion {{{
 set completeopt=menuone,preview,noinsert,noselect
@@ -67,7 +67,7 @@ set autoindent
 set wrap
 set textwidth=79
 set formatoptions=qrn1
-set colorcolumn=85
+set colorcolumn=80
 " }}}
 " ModeLine {{{
 set modeline
@@ -116,12 +116,6 @@ set hlsearch
 " use common regex syntax for search, not vims one
 nnoremap / /\v
 vnoremap / /\v
-" open quickfix/locations after *grep commands
-augroup auto_quickfix_location_open
-    autocmd!
-    autocmd QuickFixCmdPost [^l]* cwindow
-    autocmd QuickFixCmdPost l*    lwindow
-augroup END
 " }}}
 " Movement {{{
 " quick exit insert mode
@@ -183,6 +177,26 @@ vmap <Leader>d "+d
 nmap <Leader>p "+p
 nmap <Leader>P "+P
 " }}}
+" Command mode mappings {{{
+" start of line
+cnoremap <C-A>  <Home>
+" back one character
+cnoremap <C-B>  <Left>
+" delete character under cursor
+cnoremap <C-D>  <Del>
+" end of line
+cnoremap <C-E>  <End>
+" forward one character
+cnoremap <C-F>  <Right>
+" recall newer command-line
+cnoremap <C-N>  <Down>
+" recall previous (older) command-line
+cnoremap <C-P>  <Up>
+" back one word
+cnoremap <Esc><C-B> <S-Left>
+" forward one word
+cnoremap <Esc><C-F> <S-Right>
+" }}}
 " Buffer handling {{{
 "Don't ask to save when changing buffers (i.e. when jumping to a type definition)
 set hidden
@@ -215,6 +229,12 @@ endfunction
 command! -bang -nargs=1 -complete=file QFilterFiles call s:QuickfixListFilterFiles(<bang>0, <q-args>)
 command! QFilterErrors call setqflist(filter(getqflist(), "v:val['type'] =~ 'e'"))
 command! QFilterWarnings call setqflist(filter(getqflist(), "v:val['type'] =~ 'w'"))
+" open quickfix/locations after *grep commands
+augroup auto_quickfix_location_open
+    autocmd!
+    autocmd QuickFixCmdPost [^l]* cwindow
+    autocmd QuickFixCmdPost l*    lwindow
+augroup END
 " }}}
 " Location list {{{
 nnoremap <C-l>o :lop<CR>
