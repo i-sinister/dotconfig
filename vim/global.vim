@@ -1,5 +1,6 @@
 " vim: se ff=unix
 " Color scheme {{{
+set termguicolors
 set background=dark
 " }}}
 " General {{{
