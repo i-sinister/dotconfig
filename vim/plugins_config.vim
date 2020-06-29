@@ -56,6 +56,7 @@ nnoremap <Leader>fl :FBLines<CR>
 nnoremap <Leader>fal :FLines<CR>
 nnoremap <Leader>fm :FMaps<CR>
 nnoremap <Leader>fh :FHistory<CR>
+nnoremap <Leader>; :FCommands<CR>
 " }}}
 " NERDTree {{{
 nnoremap ypn :NERDTreeToggle<CR>

@@ -259,6 +259,11 @@ alias prop
 abbr    public Property { get; set; }
     public ${1:#:Result} ${2:#:Name} { get${3:;} ${4:private }set${5:;} }${0:TARGET}
 
+snippet roproperty
+alias roprop
+abbr    public readonly Property { get; }
+    public readonly ${1:#:Result} ${2:#:Name} { get; }${0:TARGET}
+
 snippet prproperty
 abbr    protected Property { get; set; }
     protected ${1:#:Result} ${2:#:Name} { get${3:;} ${4:private }set${5:;} }${0:TARGET}

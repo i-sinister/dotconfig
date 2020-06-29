@@ -66,9 +66,9 @@ set autoindent
 " }}}
 " Longlines handing {{{
 set wrap
-set textwidth=79
+set textwidth=99
 set formatoptions=qrn1
-set colorcolumn=80
+set colorcolumn=100
 " }}}
 " ModeLine {{{
 set modeline

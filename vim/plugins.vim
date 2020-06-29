@@ -36,6 +36,7 @@ Plug 'airblade/vim-gitgutter'
 " }}}
 "async external commands with output in vim
 Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-obsession'
 " fast movement
 Plug 'easymotion/vim-easymotion'
 " syntax checking on save
@@ -112,4 +113,7 @@ Plug 'gurpreetatwal/vim-avro'
 Plug 'i-sinister/vim-todo'
 " }}}
 Plug 'ryanoasis/vim-devicons'
+Plug 'DanilaMihailov/vim-tips-wiki'
+Plug 'bfrg/vim-jqplay'
+Plug 'bfrg/vim-jq'
 " vim:foldmethod=marker:foldlevel=0
