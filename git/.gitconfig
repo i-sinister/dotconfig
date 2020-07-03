@@ -1,10 +1,11 @@
 [credential]
 	helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
+[core]
+        editor = vim
 [diff]
-	guitool = kdiff3
-[difftool "kdiff3"]
-	trustExitCode = false
-	cmd = kdiff3 $BASE $REMOTE
+        tool = vimdiff
+[difftool]
+        prompt = false
 [merge]
 	tool = kdiff3
 [mergetool "kdiff3"]
