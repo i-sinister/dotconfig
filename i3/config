@@ -96,11 +96,14 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
-bindsym $mod+Shift+o focus output eDP-1
-bindsym $mod+Shift+p focus output DP-2
+bindsym $mod+Shift+o focus output left
+bindsym $mod+Shift+p focus output right
 
 bindsym $mod+z workspace back_and_forth
 bindsym $mod+Shift+z move container to workspace back_and_forth; workspace back_and_forth
+
+bindsym $mod+Ctrl+bracketleft move workspace to output left
+bindsym $mod+Ctrl+bracketright move workspace to output right
 
 # resize mode
 bindsym $mod+Ctrl+r mode "resize"
