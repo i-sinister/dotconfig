@@ -1,0 +1,16 @@
+[credential]
+	helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
+[diff]
+	guitool = kdiff3
+[difftool "kdiff3"]
+	trustExitCode = false
+	cmd = kdiff3 $BASE $REMOTE
+[merge]
+	tool = kdiff3
+[mergetool "kdiff3"]
+	trustExitCode = false
+	cmd = kdiff3 $BASE $LOCAL $REMOTE -o $MERGED
+[alias]
+	ls = log --reflog --oneline --graph -n 10
+	unstage = reset HEAD --
+	view = !gitk --all
