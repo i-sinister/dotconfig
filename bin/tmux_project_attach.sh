@@ -14,7 +14,7 @@ tmuxinator list \
     | rofi -dmenu -matching fuzzy -sort -p "projects"\
     | while read project;
 do
-    xfce4-terminal --maximize --hide-borders --hide-menubar --hide-toolbar -e "tmuxinator $project"
+    xfce4-terminal --hide-menubar --hide-scrollbar -e "tmuxinator $project"
 done;
 
 exit 0

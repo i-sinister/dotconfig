@@ -15,7 +15,7 @@ bindsym $mod+Ctrl+q kill
 
 # rofi shortcuts
 bindsym $mod+d exec "rofi -show drun -modi drun,run -lines 10 -bw 1 -show-icons"
-bindsym $mod+Tab exec rofi -show window -lines 10 -bw 1 -show-icons -kb-cancel "Super_L+Escape,Escape" -kb-accept-entry '!Super_L-Tab,Return' -kb-row-down "Super_L+Tab,Super_L+Down" -kb-row-up "Super_L+ISO_Left_Tab,Super_L+Up"
+bindsym $mod+Tab exec "rofi -show window -lines 10 -bw 1 -show-icons -kb-cancel \\"Super_L+Escape,Escape\\" -kb-accept-entry '!Super_L-Tab,Return' -kb-row-down \\"Super_L+Tab,Super_L+Down\\" -kb-row-up \\"Super_L+ISO_Left_Tab,Super_L+Up\\""
 bindsym $mod+mod1+t exec bash -c "~/.config/bin/tmux_project_attach.sh"
 bindsym $mod+t exec bash -c "~/.config/bin/tmux_session_attach.sh"
 bindsym $mod+o exec bash -c "~/.config/bin/document_open.sh ~/Documents/doc ~/Documents/wiki"
@@ -29,7 +29,8 @@ bindsym $mod+mod1+z exec cmus-remote --prev
 # xfce shortcuts
 bindsym $mod+a exec xfce4-appfinder
 bindsym $mod+r exec xfrun4
-bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Ctrl+Return exec xfce4-terminal --hide-menubar --hide-scrollbar
+bindsym $mod+Return exec "xfce4-terminal --hide-menubar --hide-scrollbar -e \\"tmux new-session -A -s new_session \\""
 bindsym $mod+grave exec xfce4-popup-clipman
 bindsym $mod+mod1+p exec xfce4-display-settings --minimal
 bindsym $mod+F1 exec exec xfce4-find-cursor
