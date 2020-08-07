@@ -232,7 +232,7 @@ function! s:FilterQf(filter, title_suffix)
   let items = filter(getqflist(), a:filter)
   let title = getqflist({'title':0}).title
   if title !~ ': ' . a:title_suffix
-    title = title . ': ' . a:title_suffix
+    let title = title . ': ' . a:title_suffix
   endif
   call setqflist([], ' ', {'nr': '$', 'items': items, 'title': title})
 endfunction
