@@ -218,18 +218,31 @@ nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
 " }}}
 " QuickFix list {{{
+nnoremap [ql :colder<CR>
+nnoremap ]ql :cnewer<CR>
 nnoremap <C-c>o :cope<CR>
 nnoremap <C-c>c :ccl<CR>
 nnoremap <C-c>f :QFilterFiles 
 nnoremap <C-c>e :QFilterErrors<CR>
 nnoremap <C-c>w :QFilterWarnings<CR>
-function! s:QuickfixListFilterFiles(bang, pattern)
-  let cmp = a:bang ? '!~' : '=~'
-  call setqflist(filter(getqflist(), "bufname(v:val['bufnr']) " . cmp . " a:pattern"))
+command! -bang -nargs=1 -complete=file QFilterFiles call s:QuickfixListFilterFiles(<bang>0, <f-args>)
+command! QFilterErrors call s:FilterQf("v:val['type'] =~ 'e'", 'Errors')
+command! QFilterWarnings call s:FilterQf("v:val['type'] =~ 'w'", 'Warnings')
+function! s:FilterQf(filter, title_suffix)
+  let items = filter(getqflist(), a:filter)
+  let title = getqflist({'title':0}).title
+  if title !~ ': ' . a:title_suffix
+    title = title . ': ' . a:title_suffix
+  endif
+  call setqflist([], ' ', {'nr': '$', 'items': items, 'title': title})
 endfunction
-command! -bang -nargs=1 -complete=file QFilterFiles call s:QuickfixListFilterFiles(<bang>0, <q-args>)
-command! QFilterErrors call setqflist(filter(getqflist(), "v:val['type'] =~ 'e'"))
-command! QFilterWarnings call setqflist(filter(getqflist(), "v:val['type'] =~ 'w'"))
+function! s:QuickfixListFilterFiles(bang, pattern)
+  let Filter = a:bang 
+    \ ? {idx, val -> bufname(val['bufnr']) !~ a:pattern}
+    \ : {idx, val -> bufname(val['bufnr']) =~ a:pattern}
+  call s:FilterQf(Filter, a:pattern)
+endfunction
+
 " open quickfix/locations after *grep commands
 augroup auto_quickfix_location_open
     autocmd!
@@ -238,11 +251,13 @@ augroup auto_quickfix_location_open
 augroup END
 " }}}
 " Location list {{{
+nnoremap [ll :lolder<CR>
+nnoremap ]ll :lnewer<CR>
 nnoremap <C-l>o :lop<CR>
 nnoremap <C-l>c :lcl<CR>
 nnoremap <C-l>f :LocationFilterFiles 
 nnoremap <C-l>e :LocationFilterErrors<CR>
-nnoremap <C-l>w :LocationFilterErrors<CR>
+nnoremap <C-l>w :LocationFilterWarnings<CR>
 function! s:LocationFilterFiles(bang, pattern)
   let cmp = a:bang ? '!~' : '=~'
   call setloclist(0, filter(getloclist(0), "bufname(v:val['bufnr']) " . cmp . " a:pattern"))

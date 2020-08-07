@@ -1,4 +1,3 @@
-" Use ctrlp.vim
 let g:OmniSharp_selector_ui = 'fzf'
 let g:OmniSharp_server_stdio = 1
 let g:OmniSharp_highlight_types = 3
@@ -6,12 +5,19 @@ let g:OmniSharp_loopup_metadata = 1
 let g:OmniSharp_typeLookupInPreview = 1
 let g:OmniSharp_want_snippet = 0
 let g:omnicomplete_fetch_full_documentation = 1
+let g:OmniSharp_diagnostic_exclude_paths = [
+	\ '/tmp/',
+	\ '.nuget/packages/',
+	\ '/obj/Debug/',
+	\ '\<AssemblyInfo\.cs\>'
+	\]
 
 
 augroup omnisharp_commands
 	autocmd!
 	"Set autocomplete function to OmniSharp (if not using YouCompleteMe completion plugin)
 	autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
+	autocmd FileType cs nnoremap <buffer> <C-r><C-s> :wa!<CR>:OmniSharpRestartServer<CR>
 	autocmd FileType cs nnoremap <buffer> <C-r><C-b> :wa!<CR>:OmniSharpBuildAsync<CR>
 	autocmd FileType cs nnoremap <buffer> <C-r><C-t> :wa!<CR>:OmniSharpRunTest<CR>
 	autocmd FileType cs nnoremap <buffer> <C-r><C-f> :wa!<CR>:OmniSharpRunTestsInFile<CR>

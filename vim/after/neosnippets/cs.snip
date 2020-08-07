@@ -18,6 +18,31 @@ options head
         }
     }
 
+snippet addStaticClass
+alias   addsc
+abbr    namespace { static class {} }
+options head
+    namespace ${1:`substitute(expand('%:h'), '\/', '.', 'g')`}
+    {
+        public static class ${2:`expand('%:t:r')`}
+        {
+            ${0:TARGET}
+        }
+    }
+
+snippet addExtensions
+alias   addEx
+abbr    namespace { static class {} }
+options head
+    namespace ${1:`substitute(expand('%:h'), '\/', '.', 'g')`}
+    {
+        public static class ${2:`expand('%:t:r')`}
+        {
+            public static ${1:void} ${2:#:Method}(this ${3:#:arguments}) =>
+                ${0:TARGET}
+        }
+    }
+
 snippet addinterface
 alias   addi
 abbr    namespace { interface {} }
@@ -363,7 +388,7 @@ options head
         }
     }
 
-snippet [ntest
+snippet ntest
 options head
     [Test]
     public void CheckThat${1:#:Name}()
