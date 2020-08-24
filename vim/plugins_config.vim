@@ -78,7 +78,7 @@ nnoremap <Leader>fa :Ag!<Space><cword><CR>
 " like similar to autochdir
 let g:rooter_change_directory_for_non_project_files = 'current'
 " change directory for current window only
-let g:rooter_use_lcd = 1
+let g:rooter_cd_cmd="lcd"
 " }}}
 " airline {{{
 let g:airline_powerline_fonts = 1
