@@ -18,7 +18,9 @@ endif
 " pipes are doing following:
 " - dotnet build prints messages twice, so "sort -u" removes duplicates
 CompilerSet makeprg=dotnet\ build\ --nologo\ --verbosity\ quiet\ -p:GenerateFullPaths=true\ \\\|&\ sort\ -u
-CompilerSet errorformat=%f(%l\\\,%c):\ %t%.%#\ CS%n:\ %m,%-G\\s%#,%-G%.%#
+CompilerSet errorformat=%f(%l\\\,%c):\ %t%.%#\ CS%n:\ %m
+CompilerSet errorformat+=%f(%l\\\,%c):\ %t%.%#\ SA%n:\ %m
+CompilerSet errorformat+=%-G\\s%#,%-G%.%#
 
 
 let &cpo = s:keepcpo

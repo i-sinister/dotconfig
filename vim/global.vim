@@ -225,9 +225,11 @@ nnoremap <C-c>c :ccl<CR>
 nnoremap <C-c>f :QFilterFiles 
 nnoremap <C-c>e :QFilterErrors<CR>
 nnoremap <C-c>w :QFilterWarnings<CR>
+nnoremap <C-c>s :QSort<CR>
 command! -bang -nargs=1 -complete=file QFilterFiles call s:QuickfixListFilterFiles(<bang>0, <f-args>)
 command! QFilterErrors call s:FilterQf("v:val['type'] =~ 'e'", 'Errors')
 command! QFilterWarnings call s:FilterQf("v:val['type'] =~ 'w'", 'Warnings')
+command! QSort call setqflist(sort(getqflist(), 'ErrorMessage'),'r')
 function! s:FilterQf(filter, title_suffix)
   let items = filter(getqflist(), a:filter)
   let title = getqflist({'title':0}).title
@@ -241,6 +243,11 @@ function! s:QuickfixListFilterFiles(bang, pattern)
     \ ? {idx, val -> bufname(val['bufnr']) !~ a:pattern}
     \ : {idx, val -> bufname(val['bufnr']) =~ a:pattern}
   call s:FilterQf(Filter, a:pattern)
+endfunction
+
+function! ErrorMessage(error1, error2)
+    let [message1, message2] = [a:error1.text, a:error2.text]
+    return message1 <# message2 ? -1 : message1 ==# message2 ? 0 : 1
 endfunction
 
 " open quickfix/locations after *grep commands
@@ -258,6 +265,7 @@ nnoremap <C-l>c :lcl<CR>
 nnoremap <C-l>f :LocationFilterFiles 
 nnoremap <C-l>e :LocationFilterErrors<CR>
 nnoremap <C-l>w :LocationFilterWarnings<CR>
+nnoremap <C-l>s :LocationSort<CR>
 function! s:LocationFilterFiles(bang, pattern)
   let cmp = a:bang ? '!~' : '=~'
   call setloclist(0, filter(getloclist(0), "bufname(v:val['bufnr']) " . cmp . " a:pattern"))
@@ -265,6 +273,7 @@ endfunction
 command! -bang -nargs=1 -complete=file LFilter call s:LocationFilterFiles(<bang>0, <q-args>)
 command! LocationFilterErrors call setloclist(0, filter(getloclist(0), "v:val['type'] == 'E'"))
 command! LocationFilterWarnings call setloclist(0, filter(getloclist(0), "v:val['type'] == 'W'"))
+command! LocationSort call setloclist(0, sort(getloclist(0), 'ErrorMessage'),'r')
 " }}}
 " Preview window {{{
 nnoremap <C-p>c :pclose<CR>
