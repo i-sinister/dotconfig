@@ -123,18 +123,42 @@ autocmd FileType less set omnifunc=csscomplete#CompleteCSS
 " }}}
 " neocomplete {{{
 let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#enable_fuzzy_completion = 1
+let g:neocomplete#enable_refresh_always = 0
 let g:neocomplete#enable_auto_select = 0
+let g:neocomplete#enable_auto_close_preview = 1
+" should be higher then 'timeoutlen'
+let g:neocomplete#auto_complete_delay = 550
+
+" with omnisharp implementing fuzzy search calling with shorted strings causes severe performance
+" issues
+let g:neocomplete#auto_completion_start_length = 3
 " Set minimum syntax keyword length.
 let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
 " Define keyword.
 if !exists('g:neocomplete#keyword_patterns')
     let g:neocomplete#keyword_patterns = {}
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources')
+  let g:neocomplete#sources = {}
+endif
+let g:neocomplete#sources.cs = ['omni']
+
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+let g:neocomplete#sources#omni#input_patterns.cs = '.*[^=\);]'
+
+if !exists('g:neocomplete#delimiter_patterns')
+  let g:neocomplete#delimiter_patterns = {}
+endif
+let g:neocomplete#delimiter_patterns.cs = ['.']
+
 " Plugin key-mappings.
 inoremap <expr><C-g> neocomplete#undo_completion()
 inoremap <expr><C-l> neocomplete#complete_common_string()
@@ -151,11 +175,6 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-let g:neocomplete#sources#omni#input_patterns.cs = '.*[^=\);]'
 " }}}
 " neosnippet {{{
 let g:neosnippet#enable_snipmate_compatibility=1

@@ -1,10 +1,13 @@
 let g:OmniSharp_selector_ui = 'fzf'
+let g:OmniSharp_selector_findusages = ''
 let g:OmniSharp_server_stdio = 1
-let g:OmniSharp_highlight_types = 3
+let g:OmniSharp_highlight_types = 2
+let g:OmniSharp_highlighting = 2
 let g:OmniSharp_loopup_metadata = 1
 let g:OmniSharp_typeLookupInPreview = 1
 let g:OmniSharp_want_snippet = 0
 let g:omnicomplete_fetch_full_documentation = 1
+let g:OmniSharp_diagnostic_showid = 1
 let g:OmniSharp_diagnostic_exclude_paths = [
 	\ '/tmp/',
 	\ '.nuget/packages/',

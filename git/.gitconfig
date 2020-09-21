@@ -2,6 +2,7 @@
 	helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
 [core]
         editor = vim
+	autocrlf = input
 [diff]
         tool = vimdiff
 [difftool]
@@ -13,5 +14,6 @@
 	cmd = kdiff3 $BASE $LOCAL $REMOTE -o $MERGED
 [alias]
 	ls = log --reflog --oneline --graph -n 10
+	ls3 = log --reflog --oneline --graph -n 30
 	unstage = reset HEAD --
 	view = !gitk --all
