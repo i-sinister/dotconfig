@@ -30,6 +30,10 @@ source ~/.config/zsh/zsh-interactive-cd.plugin.zsh
 # common aliases
 source ~/.config/zsh/aliases.sh
 # load local configuration
+LOCALRC=~/.config/local/zsh/.zshrc
+if [[ -f $LOCALRC && -r $LOCALRC ]]; then
+    source $LOCALRC
+fi
 LOCALALIASES=~/.config/local/zsh/aliases.sh
 if [[ -f $LOCALALIASES && -r $LOCALALIASES ]]; then
     source $LOCALALIASES
