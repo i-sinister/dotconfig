@@ -20,6 +20,8 @@ endif
 CompilerSet makeprg=dotnet\ build\ --nologo\ --verbosity\ quiet\ -p:GenerateFullPaths=true\ \\\|&\ sort\ -u
 CompilerSet errorformat=%f(%l\\\,%c):\ %t%.%#\ CS%n:\ %m
 CompilerSet errorformat+=%f(%l\\\,%c):\ %t%.%#\ SA%n:\ %m
+CompilerSet errorformat+=%f(%l\\\,%c):\ %t%.%#\ IDE%n:\ %m
+CompilerSet errorformat+=%f(%l\\\,%c):\ %t%.%#\ CA%n:\ %m
 CompilerSet errorformat+=%-G\\s%#,%-G%.%#
 
 
