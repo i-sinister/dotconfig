@@ -96,7 +96,7 @@ set directory=$VIM_VAR/swap//
 if !isdirectory(expand($VIM_VAR.'/undo'))
   call mkdir(expand($VIM_VAR.'/undo'), "p")
 endif
-set undodir=$VIM_VAR/undo//
+set undodir=$VIM_VAR/undo/
 set undofile
 " }}}
 " Folding {{{
@@ -216,6 +216,12 @@ nnoremap <C-H> <C-W><C-H>
 " Tabs {{{
 nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
+nnoremap [TA :tabfirst<CR>
+nnoremap [ta :tabprev<CR>
+nnoremap ]ta :tabnext<CR>
+nnoremap ]TA :tablast<CR>
+nnoremap <C-T>c :tabclose<CR>
+nnoremap <C-T>o :tabonly<CR>
 " }}}
 " QuickFix list {{{
 nnoremap [ql :colder<CR>
