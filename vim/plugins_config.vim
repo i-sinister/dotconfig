@@ -65,6 +65,7 @@ nnoremap <Leader>l :NERDTreeFind<CR>
 "let g:NERDTreeDirArrowCollapsible = '▾'
 let g:NERDTreeWinPos = 'right'
 let NERDTreeMinimalUI = 1
+let NERDTreeIgnore=['\.pyc$', '\~$', '__pycache__$']
 " }}}
 " Ag {{{
 " highlight results
@@ -128,6 +129,7 @@ let g:neocomplete#enable_fuzzy_completion = 1
 let g:neocomplete#enable_refresh_always = 0
 let g:neocomplete#enable_auto_select = 0
 let g:neocomplete#enable_auto_close_preview = 1
+let g:neocomplete#disable_auto_complete=1
 " should be higher then 'timeoutlen'
 let g:neocomplete#auto_complete_delay = 550
 

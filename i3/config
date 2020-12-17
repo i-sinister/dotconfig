@@ -41,7 +41,7 @@ bindsym $mod+Print exec xfce4-screenshooter -r
 # other applications
 bindsym $mod+m exec exo-open --launch FileManager
 bindsym $mod+w exec exo-open --launch WebBrowser
-bindsym $mod+e exec mousepad
+bindsym $mod+e exec thunar
 bindsym $mod+g exec gvim
 
 # volume management

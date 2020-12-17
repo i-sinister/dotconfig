@@ -381,10 +381,16 @@ abbr    ntestf {}
 options head
     namespace ${1:`substitute(expand('%:h'), '\/', '.', 'g')`}
     {
+        using NUnit.Framework;
+
         [TestFixture]
         public class ${2:`expand('%:t:r')`}
         {
-            ${2:TARGET}Assert.Fail();
+            [Test]
+            public void CheckThat${1:#:Name}()
+            {
+                ${2:TARGET}Assert.Fail();
+            }
         }
     }
 

@@ -232,10 +232,23 @@ nnoremap <C-c>f :QFilterFiles
 nnoremap <C-c>e :QFilterErrors<CR>
 nnoremap <C-c>w :QFilterWarnings<CR>
 nnoremap <C-c>s :QSort<CR>
+nnoremap <C-c>sf :QSortByFile<CR>
 command! -bang -nargs=1 -complete=file QFilterFiles call s:QuickfixListFilterFiles(<bang>0, <f-args>)
 command! QFilterErrors call s:FilterQf("v:val['type'] =~ 'e'", 'Errors')
 command! QFilterWarnings call s:FilterQf("v:val['type'] =~ 'w'", 'Warnings')
 command! QSort call setqflist(sort(getqflist(), 'ErrorMessage'),'r')
+function! CompareQfByFileNames(first, second)
+  let l:first_name = bufname(a:first['bufnr'])
+  let l:second_name = bufname(a:second['bufnr'])
+  if l:first_name < l:second_name
+     return -1
+  elseif l:first_name == l:second_name
+    return 0
+  else
+    return 1
+  endif
+endfunction
+command! QSortByFile call setqflist(sort(getqflist(), 'CompareQfByFileNames'),'r')
 function! s:FilterQf(filter, title_suffix)
   let items = filter(getqflist(), a:filter)
   let title = getqflist({'title':0}).title
@@ -309,5 +322,8 @@ nnoremap <Leader>yn :let @+=expand('%:t:r')<CR>
 nnoremap <Leader>yf :let @+=expand('%:t')<CR>
 " cd to the currenty edited file
 nnoremap <Leader>cd :cd %:p:h<CR>
+" }}}
+" python specific {{{
+let python_highlight_all = 1
 " }}}
 " vim:foldmethod=marker:foldlevel=0

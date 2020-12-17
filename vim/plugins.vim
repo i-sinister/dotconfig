@@ -101,6 +101,9 @@ Plug 'OmniSharp/omnisharp-vim'
 " }}}
 " python {{{
 Plug 'davidhalter/jedi-vim'
+Plug 'nvie/vim-flake8'
+Plug 'jeetsukumaran/vim-pythonsense'
+Plug 'tell-k/vim-autopep8'
 " }}}
 " rust {{{
 Plug 'rust-lang/rust.vim'
@@ -108,6 +111,9 @@ Plug 'racer-rust/vim-racer'
 " }}}
 " avro {{{
 Plug 'gurpreetatwal/vim-avro'
+" }}}
+" liquid {{{
+Plug 'tpope/vim-liquid'
 " }}}
 " misc {{{
 Plug 'i-sinister/vim-todo'
