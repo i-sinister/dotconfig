@@ -1,13 +1,7 @@
 " vim: se ff=unix
 " color schemes {{{
 Plug 'sjl/badwolf'
-Plug 'altercation/vim-colors-solarized'
 Plug 'nightsense/wonka'
-Plug 'vim-scripts/tomatosoup.vim'
-Plug 'wmvanvliet/vim-blackboard'
-Plug 'benburrill/potato-colors'
-Plug 'KKPMW/distilled-vim'
-Plug 'Addisonbean/Vim-Xcode-Theme'
 Plug 'morhetz/gruvbox'
 " }}}
 " 'ag' searching integration

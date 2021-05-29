@@ -17,3 +17,5 @@
 	ls3 = log --reflog --oneline --graph -n 30
 	unstage = reset HEAD --
 	view = !gitk --all
+[sendpack]
+	sideband = false
