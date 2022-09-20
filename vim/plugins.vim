@@ -35,8 +35,6 @@ Plug 'tpope/vim-obsession'
 Plug 'easymotion/vim-easymotion'
 " syntax checking on save
 Plug 'scrooloose/syntastic'
-" popup completion menu
-Plug 'Shougo/neocomplete.vim'
 " sql formatter
 Plug 'vim-scripts/SQLUtilities'
 Plug 'vim-scripts/Align'
@@ -60,9 +58,6 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-repeat'
 " wiki formatting
 Plug 'vimwiki/vimwiki'
-" code snippets
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
 " editor config
 Plug 'editorconfig/editorconfig-vim'
 Plug 'majutsushi/tagbar'
