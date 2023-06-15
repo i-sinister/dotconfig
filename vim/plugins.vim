@@ -1,7 +1,6 @@
 " vim: se ff=unix
 " color schemes {{{
 Plug 'sjl/badwolf'
-Plug 'nightsense/wonka'
 Plug 'morhetz/gruvbox'
 " }}}
 " 'ag' searching integration

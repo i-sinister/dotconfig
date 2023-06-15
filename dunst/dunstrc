@@ -1,0 +1,29 @@
+[global]
+    icon_theme = "Adwaita"
+    enable_recursive_icon_lookup = true
+    font = Noto Mono Regular 10
+    # transparent
+    separator_color = "#FFFFFF00"
+    # green light
+    highlight = "#b8bb26"
+    # green light
+    frame_color = "#b8bb26"
+	frame_width = 0
+
+[urgency_low]
+   # gray
+   background = "#928374"
+   # fg
+   foreground = "#ebdbb2"
+
+[urgency_normal]
+   # bg3
+   background = "#665c54"
+   # fg
+   foreground = "#ebdbb2"
+
+[urgency_critical]
+   # red
+   background = "#cc241d"
+   # fg
+   foreground = "#ebdbb2"

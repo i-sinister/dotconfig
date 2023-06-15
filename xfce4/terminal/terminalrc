@@ -16,7 +16,7 @@ MiscTabCloseMiddleClick=TRUE
 MiscTabPosition=GTK_POS_TOP
 MiscHighlightUrls=TRUE
 MiscScrollAlternateScreen=TRUE
-FontName=NotoSansMono Nerd Font 10
+FontName=NotoMono Nerd Font 10
 ScrollingSingleLine=FALSE
 MiscBellUrgent=FALSE
 MiscMouseWheelZoom=TRUE
@@ -32,4 +32,8 @@ MiscShowUnsafePasteDialog=TRUE
 ColorForeground=#fbf1c7
 ColorBackground=#282828
 ColorPalette=#282828;#cc241d;#989a1a;#d79921;#458588;#b16286;#689d6a;#a89984;#928374;#fb4934;#b8bb26;#fabd2f;#83a598;#d3869b;#8ec07c;#ebdbb2
+ShortcutsNoMenukey=TRUE
+ShortcutsNoMnemonics=TRUE
+ShortcutsNoHelpkey=TRUE
+MiscRightClickAction=TERMINAL_RIGHT_CLICK_ACTION_CONTEXT_MENU
 

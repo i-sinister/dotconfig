@@ -1,0 +1,5 @@
+configuration {
+	icon-theme: "elementary-xfce";
+}
+@theme "/usr/share/rofi/themes/gruvbox-dark.rasi"
+
